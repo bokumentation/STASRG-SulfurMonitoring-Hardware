@@ -1,0 +1,21 @@
+InlayHints:
+  ParameterNames: false
+
+CompileFlags:
+  CompilationDatabase: build/
+  
+  Add:
+    # REPLACE THIS "loq" with your actual OS username
+
+    - -isystem
+    - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include"
+    
+    - -isystem
+    - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0"
+    
+    - -isystem
+    - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/xtensa-esp-elf"
+
+    - -std=c++17
+  
+  Remove: [-m*, -f*]

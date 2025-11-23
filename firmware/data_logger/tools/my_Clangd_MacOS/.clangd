@@ -1,0 +1,23 @@
+InlayHints:
+  ParameterNames: false
+
+CompileFlags:
+  CompilationDatabase: build/
+  
+  # Add the toolchain's system include path
+  Add:
+    # REPLACE THIS "mac" with your actual OS username
+
+    - -isystem
+    - "/Users/mac/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include"
+    
+    - -isystem
+    - "/Users/mac/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0"
+    
+    - -isystem
+    - "/Users/mac/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/xtensa-esp-elf"
+
+    - -std=c++17
+  
+  # Recommended: Remove GCC-specific flags that clangd doesn't recognize
+  Remove: [-m*, -f*]

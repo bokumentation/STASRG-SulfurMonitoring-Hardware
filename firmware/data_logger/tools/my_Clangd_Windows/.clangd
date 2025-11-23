@@ -1,0 +1,20 @@
+InlayHints:
+  ParameterNames: false
+
+CompileFlags:
+  CompilationDatabase: build/
+  
+  Add:
+    # REPLACE THIS PATH with your actual absolute path!
+    - -isystem
+    - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include"
+    
+    - -isystem
+    - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include\\c++\\14.2.0"
+    
+    - -isystem
+    - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include\\c++\\14.2.0\\xtensa-esp-elf"
+
+    - -std=c++17
+  
+  Remove: [-m*, -f*]
