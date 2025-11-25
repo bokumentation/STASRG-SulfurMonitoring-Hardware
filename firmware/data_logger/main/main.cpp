@@ -1,5 +1,4 @@
 // main.cpp
-#include "esp_err.h"
 #include "esp_log.h"
 #include <cstdio>
 #include <freertos/FreeRTOS.h>
