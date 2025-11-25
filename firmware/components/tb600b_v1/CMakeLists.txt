@@ -1,7 +1,7 @@
 # Define the component and its properties
 idf_component_register(
     # Source files to compile
-    SRCS "tb600b_v2.cpp"
+    SRCS "tb600b.cpp"
     
     # Directory for public header files (must be 'include')
     INCLUDE_DIRS "." "include"

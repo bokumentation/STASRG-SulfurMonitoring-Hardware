@@ -1,4 +1,15 @@
-```cpp
+// main.cpp
+#include "driver/gpio.h"
+#include "esp_err.h"
+#include "esp_log.h"
+#include "esp_rom_gpio.h"
+#include "hal/gpio_types.h"
+#include "soc/gpio_num.h"
+#include <cstdio>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
+#include <stdio.h>
+
 // Custom headers
 #include "board_pins.h"
 #include "tb600b.h"
@@ -8,6 +19,7 @@ const int SENSOR_READ_INTERVAL_MS = 3000; // Read every 5 seconds
 
 void system_init_info();
 void sensor_reading_task(void *pvParameters);
+void heltec_led_blinking(void *pvParameters);
 
 extern "C" void app_main(void)
 {
@@ -16,6 +28,7 @@ extern "C" void app_main(void)
 
     // Start sensor reading task
     xTaskCreate(sensor_reading_task, "SensorReadTask", 4096, NULL, 5, NULL);
+    xTaskCreate(heltec_led_blinking, "LedBlinkTask", 4096, NULL, 5, NULL);
 }
 
 void system_init_info()
@@ -42,15 +55,14 @@ void sensor_reading_task(void *pvParameters)
         // --- 1. Read H2S Sensor (UART1) ---
         err = tb600b_read_combined_data(SENSOR_H2S_UART_PORT, CMD_GET_COMBINED_DATA, sizeof(CMD_GET_COMBINED_DATA),
                                         &h2s_data);
-        
-        if (err == !ESP_OK) {
-            ESP_LOGE(SENSOR_H2S_TAG, "Read failed with error: %s", esp_err_to_name(err));
-        }
 
         // --- 2. Read SO2 Sensor (UART2) ---
         err = tb600b_read_combined_data(SENSOR_SO2_UART_PORT, CMD_GET_COMBINED_DATA, sizeof(CMD_GET_COMBINED_DATA),
                                         &so2_data);
 
+        if (err == !ESP_OK) {
+            ESP_LOGE(SENSOR_H2S_TAG, "Read failed with error: %s", esp_err_to_name(err));
+        }
 
         if (err == !ESP_OK) {
             ESP_LOGE(SENSOR_SO2_TAG, "Read failed with error: %s", esp_err_to_name(err));
@@ -79,4 +91,15 @@ void sensor_reading_task(void *pvParameters)
     }
 }
 
-```
+void heltec_led_blinking(void *pvParameters)
+{
+    esp_rom_gpio_pad_select_gpio(GPIO_NUM_35);
+    gpio_set_direction(GPIO_NUM_35, GPIO_MODE_OUTPUT);
+    gpio_set_level(GPIO_NUM_35, 1);
+    while (1) {
+        gpio_set_level(GPIO_NUM_35, 0);
+        vTaskDelay(pdMS_TO_TICKS(500));
+        gpio_set_level(GPIO_NUM_35, 1);
+        vTaskDelay(pdMS_TO_TICKS(500));
+    }
+};

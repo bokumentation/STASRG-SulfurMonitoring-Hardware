@@ -11,6 +11,9 @@
 
 static esp_err_t tb600b_wait_for_data(uart_port_t uart_num, const char *tag);
 
+/**
+ * @brief Initialize the UART Port.
+ */
 void tb600b_init_uart(uart_port_t uart_num, int tx_pin, int rx_pin, int baud_rate, const char *tag)
 {
     const uart_config_t uart_config = {
@@ -31,6 +34,9 @@ void tb600b_init_uart(uart_port_t uart_num, int tx_pin, int rx_pin, int baud_rat
     vTaskDelay(pdMS_TO_TICKS(100));
 }
 
+/**
+ * @brief Waits until data is available in the UART RX buffer, yielding the task if necessary.
+ */
 static esp_err_t tb600b_wait_for_data(uart_port_t uart_num, const char *tag)
 {
     size_t length = 0;
@@ -52,6 +58,9 @@ static esp_err_t tb600b_wait_for_data(uart_port_t uart_num, const char *tag)
     return ESP_ERR_TIMEOUT;
 }
 
+/**
+ * @brief Sends command and reads combined data from the TB600 sensor (REPLACING get_combined_data).
+ */
 esp_err_t tb600b_read_combined_data(uart_port_t uart_num, const uint8_t *command, size_t commandSize,
                                     tb600b_combined_data_t *data_out)
 {
@@ -144,22 +153,13 @@ parse_data:
     return ESP_OK;
 }
 
-tb600b_combined_data_t tb600b_get_data_safe(uart_port_t uart_num, const uint8_t *command, size_t commandSize)
-{
-    tb600b_combined_data_t data = {0,0,0,0}; // Zero-initialize the entire structure (T=0, H=0, Gas=0, Success=false)
-    const char *tag = (uart_num == UART_NUM_1) ? "SENSOR_H2S_TAG" : "SENSOR_SO2_TAG"; // Placeholder for tag determination
-
-    esp_err_t err = tb600b_read_combined_data(uart_num, command, commandSize, &data);
-
-    if (err != ESP_OK) {
-        ESP_LOGE(tag, "Failed to read data from sensor (Error: 0x%X). Returning zeroed structure.", err);
-    } else {
-        data.success = true;
-    }
-
-    return data;
-}
-
+/**
+ * @brief Converts gas concentration from ug/m³ to ppm, corrected for ambient temperature.
+ *
+ * Formula derived from Ideal Gas Law (PV = nRT) at ambient pressure (assumed 1 atm):
+ * ppm = (ug/m³) * [ (22.414 * (T_C + 273.15)) / (273.15 * M) ] * (1 / 1000)
+ * Where 22.414 L/mol is the molar volume at 0 C, 1 atm.
+ */
 float tb600b_convert_ugm3_to_ppm(float ugm3_concentration, float temperature_c, float molecular_weight)
 {
     // Constant: Molar Volume (Vm) at Standard Temperature (0°C / 273.15 K) and Pressure (1 atm)

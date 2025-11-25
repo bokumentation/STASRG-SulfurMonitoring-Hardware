@@ -4,21 +4,17 @@ InlayHints:
 CompileFlags:
   CompilationDatabase: build/
   
-  # Add the toolchain's system include path
   Add:
-    # You might also need the path to the C++ standard library headers
     # REPLACE THIS PATH with your actual absolute path!
-
     - -isystem
-    - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include"
+    - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include"
     
     - -isystem
-    - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0"
+    - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include\\c++\\14.2.0"
     
     - -isystem
-    - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/xtensa-esp-elf"
+    - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include\\c++\\14.2.0\\xtensa-esp-elf"
 
-    - -std=c++23
+    - -std=c++17
   
-  # Recommended: Remove GCC-specific flags that clangd doesn't recognize
   Remove: [-m*, -f*]

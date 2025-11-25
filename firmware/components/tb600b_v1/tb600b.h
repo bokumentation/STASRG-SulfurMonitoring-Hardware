@@ -4,7 +4,6 @@
 #include "esp_err.h"
 #include "hal/uart_types.h"
 #include <tb600b_cmd.h>
-#include <led_func.h>
 
 /**
  * @brief Structure to hold the combined sensor data.
@@ -13,7 +12,6 @@ typedef struct {
     float temperature_c; // Temperature in Celsius
     float humidity_perc; // Humidity in percentage
     float gas_ugm3;      // Gas concentration in ug/m³
-    bool success;
 } tb600b_combined_data_t;
 
 // --- MOLECULAR WEIGHTS (g/mol) for accurate conversions ---
@@ -30,20 +28,21 @@ static const int RX_BUF_SIZE = 128;
 
 // SENSOR DATA COMMAND
 void tb600b_init_uart(uart_port_t uart_num, int tx_pin, int rx_pin, int baud_rate, const char *tag);
-
-
+void tb600b_read_confirmation();
+void tb600b_read_status_response();
+void tb600b_get_combined_data(uart_port_t uart_num, const uint8_t *command, size_t commandSize, const char *tag,
+                              float *out_temperature, float *out_humidity, float *out_gasUg);
 esp_err_t tb600b_read_combined_data(uart_port_t uart_num, const uint8_t *command, size_t commandSize,
                                     tb600b_combined_data_t *data_out);
+void tb600b_set_passive_mode(uart_port_t uart_num);
 
-/**
- * @brief Sends command, reads and parses sensor data, returning the data struct directly.
- * This is the preferred, safe, high-level access function.
- * * @param uart_num The UART port number.
- * @param command The command byte array to send to the sensor.
- * @param commandSize Size of the command array.
- * @return tb600b_combined_data_t A structure containing sensor data and a success flag.
- */
-tb600b_combined_data_t tb600b_get_data_safe(uart_port_t uart_num, const uint8_t *command, size_t commandSize);
+// LED COMMAND
+void led_read_confirmation(uart_port_t uart_num);
+void led_read_status_response(uart_port_t uart_num);
+void led_get_led_status(uart_port_t uart_num);
+void led_turn_off_led(uart_port_t uart_num);
+void led_turn_on_led(uart_port_t uart_num);
+void led_set_passive_mode(uart_port_t uart_num);
 
 /**
  * @brief Converts gas concentration from micrograms per cubic meter (ug/m³) to parts per million (ppm),
