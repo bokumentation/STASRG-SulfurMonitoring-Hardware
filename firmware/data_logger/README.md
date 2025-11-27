@@ -46,7 +46,6 @@ extern "C" void app_main(void)
 void sensor_reading_task(void *pvParameters)
 {
     const size_t CMD_SIZE = sizeof(CMD_GET_COMBINED_DATA);
-
     while (1) {
         // --- 1. Read H2S Sensor (UART1) using the safe wrapper ---
         tb600b_combined_data_t h2s_data = tb600b_get_data_safe(SENSOR_H2S_UART_PORT, CMD_GET_COMBINED_DATA, CMD_SIZE);
