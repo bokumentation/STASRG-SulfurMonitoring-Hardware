@@ -114,7 +114,7 @@
         #define I2C_MASTER_SDA_IO PIN_I2C_SDA
 
         #define I2C_MASTER_NUM              I2C_NUM_0
-        #define I2C_MASTER_FREQ_HZ          400000
+        #define I2C_MASTER_FREQ_HZ          100000
 
         // -- 2.1. I2C ADDRESS for the modules ---
         // --- 2.1.1. I2C MODULE: REALTIME CLOCK - DS3231 ---
