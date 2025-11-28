@@ -1,0 +1,172 @@
+(footprint "SPI SD Card"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -2.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "0fc5b154-ff37-4074-a6c0-dd72607636f9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "SPI SD Card"
+		(at 0 -1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "ac3a81ec-8ce4-48c1-a40a-edb97d9069f7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ba0113c3-d835-4789-8a68-ae3c85df719b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1d72d46a-da5e-452d-87e2-fb8fa3fe8057")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -9 -9)
+		(end 9 9)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "07a459c7-3539-4594-a0d9-9f328984e211")
+	)
+	(fp_rect
+		(start -9 -9)
+		(end 9 9)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "70235a06-5bff-40a1-8ef5-5522de9e2b78")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "e5d2220f-e3ba-486b-a9d7-5a67409690a0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at -5.551288 7.393422)
+		(size 1.8 1.8)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "31e2b4a5-748e-4c0a-bfa3-172a2732552a")
+	)
+	(pad "2" thru_hole circle
+		(at -3.011288 7.393422)
+		(size 1.8 1.8)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "f8cae219-7c8a-423c-8018-16c6f8d367e1")
+	)
+	(pad "3" thru_hole circle
+		(at -0.471288 7.393422)
+		(size 1.8 1.8)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "46ae2c1b-8c7c-4cf7-bc0e-a1a59259eb8c")
+	)
+	(pad "4" thru_hole circle
+		(at 2.068712 7.393422)
+		(size 1.8 1.8)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "5c84ffa6-4bb0-482a-b3ad-3f8521d67d3a")
+	)
+	(pad "5" thru_hole circle
+		(at 4.608712 7.393422)
+		(size 1.8 1.8)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "059332a1-8611-4c3d-b026-f21992745a4c")
+	)
+	(pad "6" thru_hole circle
+		(at 7.148712 7.393422)
+		(size 1.8 1.8)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "143609a4-153c-4c76-beac-4f99d3f229aa")
+	)
+	(zone
+		(net 0)
+		(net_name "")
+		(layer "F.CrtYd")
+		(uuid "cbd4d9bb-b962-4672-8a8e-7773fc5e70db")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(filled_areas_thickness no)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads not_allowed)
+			(copperpour allowed)
+			(footprints not_allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+		)
+		(polygon
+			(pts
+				(xy -9 -11) (xy 9 -11) (xy 9 9) (xy -9 9)
+			)
+		)
+	)
+	(embedded_fonts no)
+)
