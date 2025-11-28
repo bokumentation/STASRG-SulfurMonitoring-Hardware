@@ -1,0 +1,225 @@
+(footprint "SSD1306 On-board"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "8d2e693b-1260-4dee-ad3e-cac36e77abc8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "SSD1306 On-board"
+		(at 0 6.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "b37be8af-5dd2-465b-a095-dc381feb72f2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "24aa411a-2669-4534-8cbc-5a90b9b7334e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a580ed3a-02e9-494b-bf84-c50c4b276327")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -13.669835 -13.98265)
+		(end 13.630165 -13.98265)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "c52bf4ce-93c2-4e77-b1f1-2fa9823de264")
+	)
+	(fp_line
+		(start -13.669835 13.81735)
+		(end -13.669835 -13.98265)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "2a16e046-8360-4668-83fe-214f241eb69b")
+	)
+	(fp_line
+		(start -13.669835 13.81735)
+		(end -8 13.81735)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "430ff392-62fe-4a2d-870a-6939bfd3d8a5")
+	)
+	(fp_line
+		(start -8 13.81735)
+		(end -6 11)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "ad229313-8c26-4c98-b342-1d7041f22372")
+	)
+	(fp_line
+		(start -6 11)
+		(end 6 11)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "62c8f32e-2c50-4484-94ef-7028205aba2f")
+	)
+	(fp_line
+		(start 6 11)
+		(end 8 13.81735)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "12d11665-e1ec-4b0e-8cab-7c8138fcd9bc")
+	)
+	(fp_line
+		(start 13.630165 -13.98265)
+		(end 13.630165 13.81735)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "b3c9f1cd-cab0-420a-9476-520fc67e0fdf")
+	)
+	(fp_line
+		(start 13.630165 13.81735)
+		(end 8 13.81735)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "74c41c39-b436-485b-adfd-002ca3a69539")
+	)
+	(fp_rect
+		(start -12 -9)
+		(end 12 2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "00b9bd56-41b2-4cf7-8f99-044fafb512e5")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 8 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "25f1d8bc-8ca6-460e-8972-fe403c926314")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at -3.852519 -11.281265)
+		(size 1.9 1.9)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b14e4133-900d-418f-9f5c-028bdbf37271")
+	)
+	(pad "2" thru_hole circle
+		(at -1.312519 -11.281265)
+		(size 1.9 1.9)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "cb6035dc-1068-4fad-a4fa-c6f0cad41aa8")
+	)
+	(pad "3" thru_hole circle
+		(at 1.227481 -11.281265)
+		(size 1.9 1.9)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "be9482c8-b25f-44e1-9fb6-266467bc076e")
+	)
+	(pad "4" thru_hole circle
+		(at 3.767481 -11.281265)
+		(size 1.9 1.9)
+		(drill 0.95)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "68d8e86e-b0d0-4d06-b6c4-d22b81ae1c4b")
+	)
+	(zone
+		(net 0)
+		(net_name "")
+		(layer "F.CrtYd")
+		(uuid "d10a9381-6993-4eae-829e-8a2f8790374e")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(filled_areas_thickness no)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads not_allowed)
+			(copperpour allowed)
+			(footprints not_allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+		)
+		(polygon
+			(pts
+				(xy -13.669835 -13.863778) (xy 13.635863 -13.834168) (xy 13.624538 13.965086) (xy -13.669835 14.016222)
+			)
+		)
+	)
+	(embedded_fonts no)
+)
