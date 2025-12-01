@@ -1,32 +1,32 @@
-(footprint "Micro_SDCARD_v1"
+(footprint "Micro_SDCARD_v2_Module"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at -8.89 -1.27 0)
+		(at -2.5 -0.471288 90)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "dd489da2-8451-4361-9748-3a6ebbc922b2")
+		(hide yes)
+		(uuid "68c986a1-65c1-453a-8f2c-ba35268b576f")
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
+				(thickness 0.1)
 			)
-			(justify left)
 		)
 	)
-	(property "Value" "Micro_SDCARD_v1"
-		(at -8.89 5.08 0)
+	(property "Value" "Micro_SDCARD_v2_Module"
+		(at -1 -0.471288 90)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "b49be580-b8d4-4a94-89d3-1a5e4fc3c731")
+		(hide yes)
+		(uuid "6fafd79f-5b3c-4f66-8ac6-7ec19e28157f")
 		(effects
 			(font
 				(size 1 1)
 				(thickness 0.15)
 			)
-			(justify left)
 		)
 	)
 	(property "Datasheet" ""
@@ -34,7 +34,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "198dbd8e-c2a1-44b9-ba83-5ff1a523ed54")
+		(uuid "0cd93c98-da6c-4f8f-bb99-5316392906b4")
 		(effects
 			(font
 				(size 1 1)
@@ -47,7 +47,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "383faf89-9ba8-440a-93cf-fe06a790af38")
+		(uuid "cff85118-0ca4-44a3-b503-ac734adf1cb5")
 		(effects
 			(font
 				(size 1 1)
@@ -57,21 +57,21 @@
 	)
 	(attr smd)
 	(fp_rect
-		(start -14 -9)
-		(end 14 9)
+		(start -13.97 -8.89)
+		(end 14.03 9.11)
 		(stroke
 			(width 0.1)
 			(type default)
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "04954e5c-034e-42c1-93a8-3b89087549a6")
+		(uuid "3ace7a9c-3481-460a-abbf-39827199e0cf")
 	)
 	(fp_text user "MISO"
-		(at 10.16 3.81 0)
+		(at 10.16 -3.81 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "01740093-cde3-45d6-ac7b-55faf04fa9ac")
+		(uuid "296a1b90-b679-4ac5-82c8-6edcf718eda0")
 		(effects
 			(font
 				(size 1 1)
@@ -81,10 +81,10 @@
 		)
 	)
 	(fp_text user "MOSI"
-		(at 10.16 -1.27 0)
+		(at 10.16 1.27 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "7d15b7f0-aa80-4cbf-8e26-56cd1cb8b45c")
+		(uuid "483aba4c-aa85-4d89-bbea-bc79c2ab977d")
 		(effects
 			(font
 				(size 1 1)
@@ -93,11 +93,11 @@
 			(justify right)
 		)
 	)
-	(fp_text user "Micro_SDCARD_v1"
-		(at -8.89 1.27 0)
+	(fp_text user "REF**"
+		(at -8.89 -1.27 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "8f042119-33d5-42b8-bf98-2e98834f137f")
+		(uuid "5eee05b4-56df-4c37-a2a0-01a01003f1b1")
 		(effects
 			(font
 				(size 1 1)
@@ -106,37 +106,37 @@
 			(justify left)
 		)
 	)
-	(fp_text user "3V3"
+	(fp_text user "GND"
 		(at 10.16 -6.35 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "a64fc148-5635-4eca-93bf-785f8f05492d")
+		(uuid "c6e7313c-a196-4563-85ec-ca60aa2c7f68")
 		(effects
 			(font
 				(size 1 1)
 				(thickness 0.15)
 			)
 			(justify right)
+		)
+	)
+	(fp_text user "Micro_SDCARD_v2"
+		(at -8.89 1.27 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "d6eb0b84-bb4d-466e-b0e5-1b0183bb9f87")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left)
 		)
 	)
 	(fp_text user "CLK"
-		(at 10.16 1.27 0)
+		(at 10.16 -1.27 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "a80b8cb6-a2fa-4b9e-860e-cca27e08a50a")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-			(justify right)
-		)
-	)
-	(fp_text user "GND"
-		(at 10.16 6.35 0)
-		(unlocked yes)
-		(layer "F.SilkS")
-		(uuid "c5777759-875f-4fe3-bf50-c14e9c983589")
+		(uuid "db250060-1514-4b21-b02b-db652863d03c")
 		(effects
 			(font
 				(size 1 1)
@@ -146,10 +146,10 @@
 		)
 	)
 	(fp_text user "CS"
-		(at 10.16 -3.81 0)
+		(at 10.16 3.81 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "d67e2a27-cfa9-4cc3-8d66-da4098d5f15e")
+		(uuid "e81887a8-7acf-4ba2-b6fb-d655652aa7e8")
 		(effects
 			(font
 				(size 1 1)
@@ -158,11 +158,37 @@
 			(justify right)
 		)
 	)
+	(fp_text user "3V3"
+		(at 10.16 6.35 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "f92d2b12-6bdb-44b7-b993-6c209c65c709")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify right)
+		)
+	)
+	(fp_text user "Micro_SDCARD_v2"
+		(at -8.89 5.08 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "60c68044-d8cc-441f-9ef6-d2e092efc84d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left)
+		)
+	)
 	(fp_text user "${REFERENCE}"
 		(at -8.89 7.62 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "cb87d8f1-6ed3-4440-8d2f-47f9ecfc7985")
+		(uuid "b9cf72d2-d856-4fcd-8bf3-0e3a12ef1a2b")
 		(effects
 			(font
 				(size 1 1)
@@ -172,52 +198,52 @@
 		)
 	)
 	(pad "1" thru_hole rect
-		(at 12.7 6.35 90)
+		(at 12.7 -6.35 270)
 		(size 1.8 1.8)
-		(drill 0.95)
+		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "5984ec08-d218-42fd-ae2f-1dae8bf5256f")
+		(uuid "7f0a8d78-989c-46fa-a66a-1829c7eccbf4")
 	)
 	(pad "2" thru_hole circle
-		(at 12.7 3.81 90)
+		(at 12.7 -3.81 270)
 		(size 1.8 1.8)
-		(drill 0.95)
+		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "be98cf17-e3fb-41e0-b7e2-75901be648d4")
+		(uuid "e292470f-acfb-40cb-a00e-03caf72c06fe")
 	)
 	(pad "3" thru_hole circle
-		(at 12.7 1.27 90)
+		(at 12.7 -1.27 270)
 		(size 1.8 1.8)
-		(drill 0.95)
+		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "72fbd1d9-0e78-4c77-935e-625821508c4c")
+		(uuid "7116d310-f1a1-4133-9039-70b44077ae51")
 	)
 	(pad "4" thru_hole circle
-		(at 12.7 -1.27 90)
+		(at 12.7 1.27 270)
 		(size 1.8 1.8)
-		(drill 0.95)
+		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "d2beeed8-af9f-43c8-883f-b25896cfbe12")
+		(uuid "5115e1b9-4e01-4429-a5db-e4e8450c119e")
 	)
 	(pad "5" thru_hole circle
-		(at 12.7 -3.81 90)
+		(at 12.7 3.81 270)
 		(size 1.8 1.8)
-		(drill 0.95)
+		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "dce7b23b-7b72-402a-9c5f-f36a7152448d")
+		(uuid "fcb6f63e-3e64-44bf-80ff-69e27953900a")
 	)
 	(pad "6" thru_hole circle
-		(at 12.7 -6.35 90)
+		(at 12.7 6.35 270)
 		(size 1.8 1.8)
-		(drill 0.95)
+		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "6f7e078a-19a4-47b7-b236-88f31a766d94")
+		(uuid "047a6cfe-f873-4394-82df-000c58ec4d9a")
 	)
 	(embedded_fonts no)
 )

@@ -1,4 +1,4 @@
-(footprint "TB600C_H2S"
+(footprint "TB600C_H2S_Module"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
@@ -16,7 +16,7 @@
 			)
 		)
 	)
-	(property "Value" "TB600C_H2S"
+	(property "Value" "TB600C_H2S_Module"
 		(at 0 4.7 0)
 		(unlocked yes)
 		(layer "F.Fab")
