@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Custom Board")(type "KiCad")(uri "/mnt/20586BA6586B7A04/RESEARCH/98_Git/STASRG-SulfurMonitoring-Hardware/pcb/footprint/Custom Board.pretty")(options "")(descr ""))
+)
