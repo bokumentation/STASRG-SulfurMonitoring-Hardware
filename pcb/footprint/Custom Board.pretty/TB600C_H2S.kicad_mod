@@ -318,6 +318,16 @@
 	)
 	(fp_line
 		(start 6.68 3.9)
+		(end -6.72 3.9)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "bf4b6e42-466d-4c10-b016-7f38c9f6940e")
+	)
+	(fp_line
+		(start 6.68 3.9)
 		(end 6.68 -2.85)
 		(stroke
 			(width 0.05)
