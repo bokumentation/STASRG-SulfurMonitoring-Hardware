@@ -5,7 +5,7 @@
 	(uuid "4e06c224-4610-4dad-9193-e9dce4955655")
 	(paper "A4")
 	(lib_symbols
-		(symbol "myCustom_STAS_RG:Anemometer"
+		(symbol "Library:Anemometer"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -141,7 +141,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myCustom_STAS_RG:GPS"
+		(symbol "Library:GPS"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -277,7 +277,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myCustom_STAS_RG:INA219"
+		(symbol "Library:INA219"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -449,7 +449,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myCustom_STAS_RG:RTC_DS3231​"
+		(symbol "Library:RTC_DS3231​"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -693,7 +693,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myCustom_STAS_RG:SPI SD Card"
+		(symbol "Library:SPI SD Card"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -865,7 +865,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myCustom_STAS_RG:SPI SD Card_v2"
+		(symbol "Library:SPI SD Card_v2"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1037,7 +1037,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myCustom_STAS_RG:SSD1306​"
+		(symbol "Library:SSD1306​"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1173,7 +1173,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myCustom_STAS_RG:TB600B"
+		(symbol "Library:TB600B"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1309,7 +1309,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myCustom_STAS_RG:TB600C"
+		(symbol "Library:TB600C"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1445,7 +1445,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myCustom_STAS_RG:WSL_V3"
+		(symbol "Library:WSL_V3"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2229,7 +2229,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myCustom_STAS_RG:Wind Direction"
+		(symbol "Library:Wind Direction"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2458,7 +2458,7 @@
 		(uuid "c2c66920-2ea2-4497-8984-be6b85ac2a9b")
 	)
 	(symbol
-		(lib_id "myCustom_STAS_RG:WSL_V3")
+		(lib_id "Library:WSL_V3")
 		(at 163.83 43.18 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2640,7 +2640,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myCustom_STAS_RG:Anemometer")
+		(lib_id "Library:Anemometer")
 		(at 73.66 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2714,7 +2714,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myCustom_STAS_RG:SSD1306​")
+		(lib_id "Library:SSD1306​")
 		(at 110.49 68.58 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2788,7 +2788,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myCustom_STAS_RG:INA219")
+		(lib_id "Library:INA219")
 		(at 96.52 69.85 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2868,7 +2868,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myCustom_STAS_RG:TB600B")
+		(lib_id "Library:TB600B")
 		(at 29.21 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2942,7 +2942,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myCustom_STAS_RG:TB600C")
+		(lib_id "Library:TB600C")
 		(at 44.45 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3016,7 +3016,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myCustom_STAS_RG:GPS")
+		(lib_id "Library:GPS")
 		(at 58.42 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3090,7 +3090,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myCustom_STAS_RG:SPI SD Card")
+		(lib_id "Library:SPI SD Card")
 		(at 60.96 73.66 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3170,7 +3170,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myCustom_STAS_RG:RTC_DS3231​")
+		(lib_id "Library:RTC_DS3231​")
 		(at 36.83 74.93 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3261,7 +3261,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myCustom_STAS_RG:Wind Direction")
+		(lib_id "Library:Wind Direction")
 		(at 88.9 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3336,7 +3336,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myCustom_STAS_RG:SPI SD Card_v2")
+		(lib_id "Library:SPI SD Card_v2")
 		(at 80.01 73.66 0)
 		(unit 1)
 		(exclude_from_sim no)
