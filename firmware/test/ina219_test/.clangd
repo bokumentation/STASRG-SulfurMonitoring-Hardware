@@ -5,14 +5,15 @@ CompileFlags:
   CompilationDatabase: build/
   
   Add:
-    # REPLACE THIS PATH with your actual absolute path!
+    # REPLACE THIS "loq" with your actual OS username
+
     - -isystem
-    - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include"
+    - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include"
     
     - -isystem
-    - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include\\c++\\14.2.0"
+    - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0"
     
     - -isystem
-    - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include\\c++\\14.2.0\\xtensa-esp-elf"
+    - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/xtensa-esp-elf"
   
   Remove: [-m*, -f*]

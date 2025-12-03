@@ -7,8 +7,8 @@
 #include <assert.h>
 #include "board_pins.h"
 
-#define I2C_PORT 0
-#define I2C_ADDR 0x41
+#define I2C_PORT I2C_MASTER_NUM
+#define I2C_ADDR I2C_HW_ADDR_SENSOR_INA219_1
 #define CONFIG_EXAMPLE_SHUNT_RESISTOR_MILLI_OHM 100
 #define CONFIG_EXAMPLE_I2C_MASTER_SDA PIN_I2C_SDA
 #define CONFIG_EXAMPLE_I2C_MASTER_SCL PIN_I2C_SCL
@@ -22,6 +22,7 @@ void task(void *pvParameters)
 
     assert(CONFIG_EXAMPLE_SHUNT_RESISTOR_MILLI_OHM > 0);
     ESP_ERROR_CHECK(ina219_init_desc(&dev, I2C_ADDR, I2C_PORT, CONFIG_EXAMPLE_I2C_MASTER_SDA, CONFIG_EXAMPLE_I2C_MASTER_SCL));
+   
     ESP_LOGI(TAG, "Initializing INA219");
     ESP_ERROR_CHECK(ina219_init(&dev));
 
