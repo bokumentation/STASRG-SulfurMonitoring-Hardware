@@ -227,7 +227,7 @@
 	)
 	(pad "1" thru_hole rect
 		(at 17.78 5.079999 180)
-		(size 1.8 1.47)
+		(size 1.8 1.8)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
@@ -275,7 +275,7 @@
 	)
 	(pad "7" thru_hole rect
 		(at -17.78 2.54 180)
-		(size 1.8 1.47)
+		(size 1.8 1.8)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)

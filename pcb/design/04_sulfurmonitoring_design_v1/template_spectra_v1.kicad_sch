@@ -5566,7 +5566,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Custom Board:STASRG_Wind_Dir"
+		(property "Footprint" "Custom Board:STASRG_Wind_Dir_Module"
 			(at 136.144 41.148 0)
 			(effects
 				(font
@@ -5773,7 +5773,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Custom Board:TB600B_SO2"
+		(property "Footprint" "Custom Board:TB600B_SO2_Module"
 			(at 143.51 17.018 0)
 			(effects
 				(font
@@ -6045,7 +6045,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Custom Board:uBlox_NEO-6M_JST"
+		(property "Footprint" "Custom Board:uBlox_NEO-6M_Module_JST"
 			(at 212.09 15.748 0)
 			(effects
 				(font
@@ -6119,7 +6119,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Custom Board:STASRG_Anemometer"
+		(property "Footprint" "Custom Board:STASRG_Anemometer_Module"
 			(at 181.61 42.926 0)
 			(effects
 				(font
@@ -6259,7 +6259,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Custom Board:DS3231"
+		(property "Footprint" "Custom Board:DS3231_Module"
 			(at 116.84 100.838 0)
 			(effects
 				(font
@@ -6615,7 +6615,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Custom Board:Micro_SDCARD_v2"
+		(property "Footprint" "Custom Board:Micro_SDCARD_v2_Module"
 			(at 113.03 137.668 0)
 			(effects
 				(font
@@ -6695,7 +6695,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Custom Board:INA219"
+		(property "Footprint" "Custom Board:INA219_Module"
 			(at 49.784 44.196 0)
 			(effects
 				(font
@@ -7371,7 +7371,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Custom Board:TB600C_H2S"
+		(property "Footprint" "Custom Board:TB600C_H2S_Module"
 			(at 179.07 16.002 0)
 			(effects
 				(font
@@ -8399,7 +8399,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Custom Board:Heltec_WSL_V3_v1"
+		(property "Footprint" "Custom Board:Heltec_WSL_V3_Module"
 			(at 58.928 101.092 0)
 			(effects
 				(font
@@ -8719,7 +8719,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Custom Board:SSD1306_onBoard"
+		(property "Footprint" "Custom Board:SSD1306_Module"
 			(at 245.872 124.968 0)
 			(effects
 				(font
