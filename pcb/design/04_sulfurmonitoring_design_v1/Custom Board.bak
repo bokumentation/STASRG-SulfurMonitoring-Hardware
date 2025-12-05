@@ -2,6 +2,142 @@
 	(version 20241209)
 	(generator "kicad_symbol_editor")
 	(generator_version "9.0")
+	(symbol "BME280_Module_JST"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at 0 10.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "BME280_Module_JST"
+			(at 0 7.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+			(at -0.254 14.224 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "BME280_Module_JST_0_1"
+			(rectangle
+				(start -3.81 5.08)
+				(end 3.81 -5.08)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "BME280_Module_JST_1_1"
+			(pin bidirectional line
+				(at 6.35 3.81 180)
+				(length 2.54)
+				(name "SCL"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 6.35 1.27 180)
+				(length 2.54)
+				(name "SDA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 6.35 -1.27 180)
+				(length 2.54)
+				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 6.35 -3.81 180)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "Buck_MP1584_3V3_Module"
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -63,7 +199,7 @@
 			)
 		)
 		(symbol "Buck_MP1584_3V3_Module_1_1"
-			(pin bidirectional line
+			(pin power_in line
 				(at -8.89 -3.81 0)
 				(length 2.54)
 				(name "IN-"
@@ -81,7 +217,7 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_in line
 				(at -8.89 -6.35 0)
 				(length 2.54)
 				(name "IN+"
@@ -99,7 +235,7 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_out line
 				(at 8.89 -3.81 180)
 				(length 2.54)
 				(name "OUT-"
@@ -117,7 +253,7 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_out line
 				(at 8.89 -6.35 180)
 				(length 2.54)
 				(name "OUT+"
@@ -199,7 +335,7 @@
 			)
 		)
 		(symbol "Buck_MP1584_5V_Module_1_1"
-			(pin bidirectional line
+			(pin power_in line
 				(at -8.89 -3.81 0)
 				(length 2.54)
 				(name "IN-"
@@ -217,7 +353,7 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_in line
 				(at -8.89 -6.35 0)
 				(length 2.54)
 				(name "IN+"
@@ -235,7 +371,7 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_out line
 				(at 8.89 -3.81 180)
 				(length 2.54)
 				(name "OUT-"
@@ -253,7 +389,7 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_out line
 				(at 8.89 -6.35 180)
 				(length 2.54)
 				(name "OUT+"
@@ -1255,7 +1391,7 @@
 			)
 		)
 		(symbol "INA219_Module_1_1"
-			(pin bidirectional line
+			(pin passive line
 				(at 6.35 1.27 180)
 				(length 2.54)
 				(name "VIN+"
@@ -1273,7 +1409,7 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin passive line
 				(at 6.35 -1.27 180)
 				(length 2.54)
 				(name "VIN-"
@@ -1349,6 +1485,142 @@
 				(at 6.35 -11.43 180)
 				(length 2.54)
 				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "Light_Sensor_I2C_JST"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at 0 10.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Light_Sensor_I2C_JST"
+			(at 0 7.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+			(at 0.254 14.224 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Light_Sensor_I2C_JST_0_1"
+			(rectangle
+				(start -3.81 5.08)
+				(end 3.81 -5.08)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "Light_Sensor_I2C_JST_1_1"
+			(pin bidirectional line
+				(at 6.35 3.81 180)
+				(length 2.54)
+				(name "SCL"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 6.35 1.27 180)
+				(length 2.54)
+				(name "SDA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 6.35 -1.27 180)
+				(length 2.54)
+				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 6.35 -3.81 180)
+				(length 2.54)
+				(name "GND"
 					(effects
 						(font
 							(size 1.27 1.27)
