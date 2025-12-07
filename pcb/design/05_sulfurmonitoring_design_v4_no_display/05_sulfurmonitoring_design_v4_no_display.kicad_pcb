@@ -1969,8 +1969,8 @@
 		(at 48.26 100.33 -90)
 		(descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf), generated with kicad-footprint-generator")
 		(tags "connector JST XH vertical")
-		(property "Reference" "J1"
-			(at 1.25 -3.55 90)
+		(property "Reference" "BAT"
+			(at 1.25 -3.55 270)
 			(layer "F.SilkS")
 			(uuid "d784d440-e7a9-4024-8dc2-90e5bbe11765")
 			(effects
