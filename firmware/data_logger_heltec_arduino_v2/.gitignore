@@ -1,6 +1,7 @@
 # Folder
 .cache
 .vscode
+bakcup/
 build/
 managed_components/
 backup/

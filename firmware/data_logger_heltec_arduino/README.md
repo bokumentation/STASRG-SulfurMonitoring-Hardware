@@ -2,11 +2,8 @@
 
 Supported Target: ESP32 | ESP32C3 | ESP32S3
 
-I use ClangD and set to Microsoft CXX Programming Style. 
-
-```bash
-clang-format -style=Microsoft -dump-config > .clang-format 
-```
+## UPDATE NOTE:
+In components folder, i added arduino-esp32 as components. Not inside the `main` folder. This is because i wanna fast build times when using `idf.py reconfigure`.
 
 
 main.cpp

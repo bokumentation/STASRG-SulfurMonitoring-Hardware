@@ -4,9 +4,15 @@
 bakcup/
 build/
 managed_components/
-bakcup/
+backup/
+espressif__*/
+chmorgan__esp-libhelix-mp3/
+joltwallet__littlefs/
 
 # File
 dependencies.lock
 sdkconfig
 sdkconfig.old
+
+# Components
+arduino-esp32/

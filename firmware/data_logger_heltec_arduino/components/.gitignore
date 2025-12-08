@@ -1,10 +1,10 @@
 # Folder
 .cache
 .vscode
-bakcup/
 build/
 managed_components/
-bakcup/
+backup/
+arduino-esp32/
 
 # File
 dependencies.lock

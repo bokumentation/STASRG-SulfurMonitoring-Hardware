@@ -1,15 +1,14 @@
 // main.cpp
-#include "HardwareSerial.h"
+#include <freertos/idf_additions.h>
+#include <freertos/projdefs.h>
 #include <Arduino.h>
+#include <HardwareSerial.h>
 #include <Wire.h>
 
 // User includes
 #include "board_pins.h" // Board pins definition
-#include "freertos/idf_additions.h"
-#include "freertos/projdefs.h"
-#include "tb600b.h" // Tb600 library
-#include "ui_ssd1306.cpp"
-#include "ra01s.h"
+#include "display/ui_ssd1306.cpp"   // SSD1306 Implementation
+#include "sensor/tb600_sensor.h" // TB600B Implementation
 
 #define SENSOR_READ_INTERVAL_MS 2000
 

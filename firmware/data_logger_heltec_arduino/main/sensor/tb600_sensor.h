@@ -3,8 +3,7 @@
 
 #include "esp_err.h"
 #include "hal/uart_types.h"
-#include <tb600b_cmd.h>
-#include <led_func.h>
+#include "tb600b_commands.h"
 
 /**
  * @brief Structure to hold the combined sensor data.
@@ -54,5 +53,21 @@ tb600b_combined_data_t tb600b_get_data_safe(uart_port_t uart_num, const uint8_t 
  * @return float The concentration in ppm.
  */
 float tb600b_convert_ugm3_to_ppm(float ugm3_concentration, float temperature_c, float molecular_weight);
+
+void tb600b_read_confirmation();
+void tb600b_read_status_response();
+void tb600b_set_passive_mode(uart_port_t uart_num, const char *tag);
+
+// Define
+#define TB600_TAG_LED "TB600_LED"
+
+// LED COMMANDs
+void led_read_confirmation(uart_port_t uart_num, const char *tag);
+void led_read_status_response(uart_port_t uart_num, const char *tag);
+void led_get_led_status(uart_port_t uart_num, const char *tag);
+void led_turn_off_led(uart_port_t uart_num, const char *tag);
+void led_turn_on_led(uart_port_t uart_num, const char *tag);
+void led_set_passive_mode(uart_port_t uart_num, const char *tag);
+
 
 #endif // TB600B_SO2_H
