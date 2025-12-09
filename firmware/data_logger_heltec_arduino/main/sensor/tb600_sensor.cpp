@@ -1,4 +1,4 @@
-#include "tb600b_commands.h"
+#include "tb600_commands.h"
 #include "tb600_sensor.h"
 #include "driver/uart.h"
 #include "esp_log.h"

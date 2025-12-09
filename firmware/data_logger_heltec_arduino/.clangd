@@ -15,7 +15,5 @@ CompileFlags:
     
     - -isystem
     - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/xtensa-esp-elf"
-
-    - -std=c++17
   
   Remove: [-m*, -f*]

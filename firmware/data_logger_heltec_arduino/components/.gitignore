@@ -4,7 +4,7 @@
 build/
 managed_components/
 backup/
-arduino-esp32/
+# arduino-esp32/
 
 # File
 dependencies.lock

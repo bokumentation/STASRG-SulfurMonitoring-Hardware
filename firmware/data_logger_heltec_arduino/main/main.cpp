@@ -10,6 +10,7 @@
 #include "display/ui_ssd1306.cpp"   // SSD1306 Implementation
 #include "sensor/tb600_sensor.h" // TB600B Implementation
 
+
 #define SENSOR_READ_INTERVAL_MS 2000
 
 tb600b_combined_data_t h2s_data{};
