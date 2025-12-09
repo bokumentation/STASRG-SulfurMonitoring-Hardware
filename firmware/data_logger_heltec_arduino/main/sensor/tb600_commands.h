@@ -1,6 +1,5 @@
-#ifndef TB600B_CMD_H
-#define TB600B_CMD_H
-
+// tb600_commands.h
+#pragma once
 #include <cstdint>
 
 /* --- SO2 GAS SENSOR TYPE: 0x24--- */
@@ -23,6 +22,3 @@ static const uint8_t CMD_TURN_ON_LED[] = {0xFF, 0x01, 0x89, 0x00, 0x00, 0x00, 0x
 // ✅ Command 2: Switches to PASSIVE UPLOAD (sensor waits for commands)
 // Return: ❌
 static const uint8_t CMDSET_MODE_PASSIVE_UPLOAD[] = {0xFF, 0x01, 0x78, 0x41, 0x00, 0x00, 0x00, 0x00, 0x46};
-
-
-#endif // TB600B_CMD_H

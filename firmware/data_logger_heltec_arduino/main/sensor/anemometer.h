@@ -8,6 +8,15 @@
 typedef struct anemometer_t* anemometer_handle_t;
 
 /**
+ * @brief Structure to hold the anemometer measurement results.
+ */
+typedef struct {
+    float rot_per_sec;  ///< Rotations per second (RPS)
+    float wind_speed_mps; ///< Wind speed in meters per second (m/s)
+    float wind_speed_kph; ///< Wind speed in kilometers per hour (km/h)
+} anemometer_data_t;
+
+/**
  * @brief Creates and initializes the anemometer structure (the "object").
  * @param pin The GPIO pin connected to the anemometer pulse output.
  * @param measurement_interval_sec The time window for pulse counting in seconds.
@@ -33,9 +42,7 @@ void anemometer_begin(anemometer_handle_t handle);
  * @return bool True if a new measurement was calculated and updated, false otherwise.
  */
 bool anemometer_read_speed(anemometer_handle_t handle, 
-                           float *rot_per_sec, 
-                           float *wind_speed_mps, 
-                           float *wind_speed_kph);
+                          anemometer_data_t *data);
 
 /**
  * @brief Cleans up the dynamically allocated anemometer context.

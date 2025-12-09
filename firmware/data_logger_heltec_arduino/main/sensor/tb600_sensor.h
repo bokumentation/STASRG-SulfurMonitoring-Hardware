@@ -1,5 +1,5 @@
-#ifndef TB600B_SO2_H
-#define TB600B_SO2_H
+// tb600_sensor.h
+#pragma once
 
 #include "esp_err.h"
 #include "hal/uart_types.h"
@@ -68,6 +68,3 @@ void led_get_led_status(uart_port_t uart_num, const char *tag);
 void led_turn_off_led(uart_port_t uart_num, const char *tag);
 void led_turn_on_led(uart_port_t uart_num, const char *tag);
 void led_set_passive_mode(uart_port_t uart_num, const char *tag);
-
-
-#endif // TB600B_SO2_H

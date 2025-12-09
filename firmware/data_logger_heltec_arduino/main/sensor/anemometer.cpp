@@ -1,7 +1,10 @@
-#include "anemometer.h"
+// anemometer.cpp
 #include <Arduino.h> // For pinMode, digitalRead, micros, millis, etc.
 #include <stdlib.h>
 #include <math.h>
+
+// User include
+#include "anemometer.h"
 
 // Internal, private structure definition (hidden from the user/header file)
 typedef struct anemometer_t {
@@ -59,9 +62,7 @@ void anemometer_begin(anemometer_handle_t handle) {
 }
 
 bool anemometer_read_speed(anemometer_handle_t handle, 
-                           float *rot_per_sec, 
-                           float *wind_speed_mps, 
-                           float *wind_speed_kph) {
+                          anemometer_data_t *data) {
     
     if (handle == NULL) return false;
     anemometer_internal_t *sensor = (anemometer_internal_t*)handle;
@@ -86,18 +87,18 @@ bool anemometer_read_speed(anemometer_handle_t handle,
     if (now_millis - sensor->last_measure_time >= sensor->measurement_interval_sec * 1000UL) {
         
         // Calculate Rotations Per Second
-        *rot_per_sec = (float)sensor->pulse_count / (float)sensor->measurement_interval_sec;
+        data->rot_per_sec = (float)sensor->pulse_count / (float)sensor->measurement_interval_sec;
 
         // Apply Calibration
-        *wind_speed_mps = calibrate_speed(*rot_per_sec);
+        data->wind_speed_mps = calibrate_speed(data->rot_per_sec);
 
         // Minimum speed check (as per original code)
-        if (*wind_speed_mps <= 1.5f) { 
-            *wind_speed_mps = 0.0f;
+        if ( data->wind_speed_mps <= 1.5f) { 
+             data->wind_speed_mps = 0.0f;
         }
 
         // Calculate Kilometers Per Hour
-        *wind_speed_kph = *wind_speed_mps * 3.6f;
+         data->wind_speed_kph =  data->wind_speed_mps * 3.6f;
 
         // Reset for the next measurement
         sensor->pulse_count = 0;
