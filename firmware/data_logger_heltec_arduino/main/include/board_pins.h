@@ -8,44 +8,46 @@
 #include <hal/uart_types.h>
 #include <sdkconfig.h>
 
-// Define Board Type. If you use HELTEC Wireless Stick Lite, please uncomment it.
+// --- Define Board Type START HERE ---
 // #define BOARD_DEVKITC_ESP32S3_V1
 #define BOARD_HELTEC_WSL_ESP32S3_V3
+// --- Define Board Type END HERE -----
 
 #ifdef CONFIG_IDF_TARGET_ESP32
-    #define ANEMOMETER_ADC_PIN GPIO_NUM_32
+    #define ANEMOMETER_ADC_PIN 32
+    #define ANEMOMETER_TAG     "ANEMOMETER"
 
-    #define H2S_UART_PORT UART_NUM_1
-    #define H2S_RX_PIN    GPIO_NUM_26
-    #define H2S_TX_PIN    GPIO_NUM_27
-    #define H2S_LOG_TAG   "TB600B_H2S"
+    #define H2S_UART_PORT     UART_NUM_1
+    #define PIN_SENSOR_H2S_RX 26
+    #define PIN_SENSOR_H2S_TX 27
+    #define SENSOR_H2S_TAG    "TB600B_H2S"
 
-    #define SO2_UART_PORT UART_NUM_2
-    #define SO2_RX_PIN    GPIO_NUM_16
-    #define SO2_TX_PIN    GPIO_NUM_17
-    #define SO2_LOG_TAG   "TB600B_SO2"
+    #define SO2_UART_PORT     UART_NUM_2
+    #define PIN_SENSOR_SO2_RX 16
+    #define PIN_SENSOR_SO2_TX 17
+    #define SENSOR_SO2_TAG    "TB600B_SO2"
 
 #elif defined(CONFIG_IDF_TARGET_ESP32C3)
-    #define ANEMOMETER_ADC_PIN GPIO_NUM_1
-    #define ANEMOMETER_TAG "ANEMOMETER"
-
+    #define ANEMOMETER_ADC_PIN 1
+    #define ANEMOMETER_TAG     "ANEMOMETER"
 
     #define SENSOR_H2S_UART_PORT UART_NUM_0
-    #define PIN_SENSOR_H2S_RX    GPIO_NUM_9
-    #define PIN_SENSOR_H2S_TX    GPIO_NUM_10
+    #define PIN_SENSOR_H2S_RX    9
+    #define PIN_SENSOR_H2S_TX    10
     #define SENSOR_H2S_TAG       "TB600B_H2S"
 
     #define SENSOR_SO2_UART_PORT UART_NUM_1
-    #define PIN_SENSOR_SO2_RX    GPIO_NUM_20
-    #define PIN_SENSOR_SO2_TX    GPIO_NUM_21
+    #define PIN_SENSOR_SO2_RX    20
+    #define PIN_SENSOR_SO2_TX    21
     #define SENSOR_SO2_TAG       "TB600B_SO2"
 
-    #define PIN_I2C_SCL GPIO_NUM_3
-    #define PIN_I2C_SDA GPIO_NUM_4
+    #define PIN_I2C_SCL 3
+    #define PIN_I2C_SDA 4
 
 #elif defined(CONFIG_IDF_TARGET_ESP32S3)
     #if defined(BOARD_DEVKITC_ESP32S3_V1)
         #define ANEMOMETER_ADC_PIN GPIO_NUM_3
+        #define ANEMOMETER_TAG     "ANEMOMETER"
 
         #define SO2_UART_PORT UART_NUM_0
         #define SO2_RX_PIN    GPIO_NUM_44

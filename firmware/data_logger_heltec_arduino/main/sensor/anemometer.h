@@ -1,5 +1,5 @@
-#ifndef ANEMOMETER_H
-#define ANEMOMETER_H
+// anemometer.h
+#pragma once
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -49,5 +49,3 @@ bool anemometer_read_speed(anemometer_handle_t handle,
  * @param handle Pointer to the sensor context to be destroyed.
  */
 void anemometer_destroy(anemometer_handle_t handle);
-
-#endif // ANEMOMETER_H

@@ -1,4 +1,4 @@
-// tb600_commands.h
+// tb600_sensor_cmd.h
 #pragma once
 #include <cstdint>
 

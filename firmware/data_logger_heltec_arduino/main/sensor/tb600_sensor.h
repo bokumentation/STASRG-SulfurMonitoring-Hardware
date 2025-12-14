@@ -3,7 +3,7 @@
 
 #include "esp_err.h"
 #include "hal/uart_types.h"
-#include "tb600_commands.h"
+#include "tb600_sensor_cmd.h"
 
 /**
  * @brief Structure to hold the combined sensor data.
