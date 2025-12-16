@@ -12,8 +12,9 @@
 // --- SENSOR: SO2 and H2S ---
 #define UART_SENSOR_READ_INTERVAL_MS 2000
 
-tb600b_combined_data_t h2s_data{};
-tb600b_combined_data_t so2_data{};
+// Inisialisasi objek untuk menyimpan data dari sensor h2s dan so2
+tb600b_combined_data_t h2s_data{}; // Struct h2s
+tb600b_combined_data_t so2_data{}; // Struct so2
 
 // Task 1: UART reading SO2 and H2S
 void sensor_reading(void *pvParameters)
@@ -31,6 +32,7 @@ void sensor_reading(void *pvParameters)
 
         float so2_ppm = tb600b_convert_ugm3_to_ppm(so2_data.gas_ugm3, so2_data.temperature_c, M_W_SO2);
 
+        // Variabel nilai ugm -> h2s_data.gas_ugm3; h2s_data.temperature_c, h2s_data.humidity_perc
         printf("H2S Gas: %.2f ug/m3 (%.3f ppm) | temp: %.2f | hum:%.2f \n", h2s_data.gas_ugm3, h2s_ppm,
                h2s_data.temperature_c, h2s_data.humidity_perc);
         printf("SO2 Gas: %.2f ug/m3 (%.3f ppm) | temp: %.2f | hum:%.2f \n", so2_data.gas_ugm3, so2_ppm,
@@ -45,7 +47,7 @@ void sensor_reading(void *pvParameters)
 #define ANEMOMETER_POLL_MS                  5
 
 anemometer_handle_t g_anemometer_handle = NULL;
-anemometer_data_t anem_data{};
+anemometer_data_t anem_data{}; // Inisialisasi objek struct untuk menyimpan data nanemometer
 
 void anemometer_task(void *pvParameters)
 {
@@ -62,11 +64,13 @@ void anemometer_task(void *pvParameters)
     ESP_LOGI(ANEMOMETER_TAG, "Init OK. Measuring every %u seconds.", ANEMOMETER_MEASUREMENT_INTERVAL_SEC);
 
     while (1) {
-    
+
         if (anemometer_read_speed(g_anemometer_handle, &anem_data)) {
             printf("Speed: %.2f m/s (%.2f km/h) | RPS: %.2f\n", anem_data.wind_speed_mps, anem_data.wind_speed_kph, anem_data.rot_per_sec);
         }
 
         vTaskDelay(pdMS_TO_TICKS(ANEMOMETER_POLL_MS));
     }
+
+    // NOTE: Variabel data anemometer: anem_data.wind_speed_mps, anem_data.wind_speed_kph, anem_data.rot_per_sec
 }

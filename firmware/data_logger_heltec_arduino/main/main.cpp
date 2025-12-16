@@ -5,6 +5,7 @@
 #include <Wire.h>
 #include <freertos/idf_additions.h>
 #include <freertos/projdefs.h>
+#include <RadioLib.h>
 
 // --- USER INCLUDE ----
 // #include "board_pins.h"           // Board pins definition
