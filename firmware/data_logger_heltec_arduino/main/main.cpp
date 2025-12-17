@@ -25,8 +25,9 @@ void loop()
 }
 
 #define SENSOR_TASK_PRIORITY 5
-#define ANEMOMETER_PIN_CFG   (void *)ANEMOMETER_ADC_PIN
+#define ANEMOMETER_PIN_CFG   (void *)PIN_SENSOR_ANEMOMETER_ADC
 
+// Task untuk sensor UART (TB600, GPS, dan Wind Dir)
 void uart_task()
 {
     // 1. Create the UART Gas Sensor Task (High stack size for potential UART buffers/complex logic)
@@ -39,6 +40,7 @@ void uart_task()
     );
 }
 
+// Task untuk sensor ADC (Anemometer)
 void adc_task()
 {
     // 2. Create the Anemometer Task (Needs to run frequently, so assign high priority)
@@ -50,7 +52,7 @@ void adc_task()
                 NULL);
 }
 
-// Main function
+// Panggil fungsi ke Fungsi Main (Utama)
 extern "C" void app_main()
 {
     initArduino();

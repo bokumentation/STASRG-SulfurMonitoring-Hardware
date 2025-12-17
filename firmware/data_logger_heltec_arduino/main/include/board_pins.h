@@ -123,6 +123,8 @@
 
         // - 4. ANALOG (ADC) Inputs (Wind Speed and Sirection) ---
         #define PIN_SENSOR_ANEMOMETER_ADC 34 // ADC1_CH3: UNTESTED
+        #define ANEMOMETER_TAG     "ANEMOMETER"
+        
         #define PIN_SENSOR_WIND_DIR_ADC   33 // ADC1_CH4: UNTESTED
 
         // - 5. BUTTON
