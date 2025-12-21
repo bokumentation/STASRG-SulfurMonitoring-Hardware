@@ -3,5 +3,5 @@ idf_component_register(
 
     INCLUDE_DIRS "."
 
-    REQUIRES arduino-esp32 Adafruit_Sensor
+    REQUIRES arduino-esp32 Adafruit_Sensor Adafruit_BusIO
 )

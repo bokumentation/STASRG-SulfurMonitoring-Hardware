@@ -5,7 +5,13 @@
 #include <Wire.h>
 #include <freertos/idf_additions.h>
 #include <freertos/projdefs.h>
+
+// --- LIBRARIES
 #include <RadioLib.h>
+#include <RTClib.h>
+#include <TinyGPSPlus.h>
+#include <Adafruit_BME280.h>
+#include <SoftwareSerial.h>
 
 // --- USER INCLUDE ----
 // #include "board_pins.h"           // Board pins definition
