@@ -21,3 +21,8 @@ if(EXISTS "${CMAKE_SOURCE_DIR}/fix_compile_commands.py")
       VERBATIM
       )
 endif()
+
+add_definitions(
+-DARDUINO_USB_MODE
+-DARDUINO_USB_CDC_ON_BOOT
+)

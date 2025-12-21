@@ -1,66 +1,63 @@
-/*********
-  Rui Santos & Sara Santos - Random Nerd Tutorials
-  Complete instructions at https://RandomNerdTutorials.com/esp32-neo-6m-gps-module-arduino/
-  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-documentation files. The above copyright notice and this permission notice shall be included in all copies or
-substantial portions of the Software.
-*********/
-
-// Define the RX and TX pins for Serial 2
-
-#include "TinyGPS++.h"
+#include "HardwareSerial.h"
 #include "esp32-hal.h"
-#include "pgmspace.h"
 #include <Arduino.h>
-#include <iostream>
+#include "SoftwareSerial.h"
 
-#define RXD2 42
-#define TXD2 41
+#define RX2 21 // pin RX2 [PUTIH TX]
+#define TX2 20 // pin TX2 [KUNING RX]
 
-#define GPS_BAUD 9600
+String data, arah_angin, s_angin;
+int a, b;
 
-TinyGPSPlus gps;
-// Create an instance of the HardwareSerial class for Serial 2
-HardwareSerial gpsSerial(2);
+#define BAUD_RATE 9600
+SoftwareSerial SerialSW(RX2, TX2);
 
-void setup()
-{
-    // Serial Monitor
-    Serial.begin(115200);
-
-    // Start Serial 2 with the defined RX and TX pins and a baud rate of 9600
-    gpsSerial.begin(GPS_BAUD, SERIAL_8N1, RXD2, TXD2);
-    Serial.println("Serial 2 started at 9600 baud rate");
+void setup() {
+  // Serial1.begin(9600, SERIAL_8N1, RX2, TX2);
+  SerialSW.begin(BAUD_RATE);
+  // .begin(BAUD_RATE);
+  printf("hello world \n");
 }
 
-void loop()
-{
-    // This sketch displays information every time a new sentence is correctly encoded.
-    unsigned long start = millis();
+void loop() {
+  printf("Di dalam fungsi loops \n");
+  printf("Jika serial1.available: \n");
 
-    while (millis() - start < 1000) {
-        while (gpsSerial.available() > 0) {
-            gps.encode(gpsSerial.read());
-        }
-        if (gps.location.isUpdated()) {
-            Serial.print("LAT: ");
-            Serial.println(gps.location.lat(), 6);
-            Serial.print("LONG: ");
-            Serial.println(gps.location.lng(), 6);
-            Serial.print("SPEED (km/h) = ");
-            Serial.println(gps.speed.kmph());
-            Serial.print("ALT (min)= ");
-            Serial.println(gps.altitude.meters());
-            Serial.print("HDOP = ");
-            Serial.println(gps.hdop.value() / 100.0);
-            Serial.print("Satellites = ");
-            Serial.println(gps.satellites.value());
-            Serial.print("Time in UTC: ");
-            Serial.println(String(gps.date.year()) + "/" + String(gps.date.month()) + "/" + String(gps.date.day()) +
-                           "," + String(gps.time.hour()) + ":" + String(gps.time.minute()) + ":" +
-                           String(gps.time.second()));
-            Serial.println("");
-        }
+  if (SerialSW.available()) // Jika ada data yang diterima dari sensor
+  {
+    data = SerialSW.readString(); // data yang diterima dari sensor berawalan tanda * dan diakhiri tanda #, contoh *1#
+    a = data.indexOf("*"); // a adalah index tanda *
+    b = data.indexOf("#"); // b adalah index tanda #
+    s_angin = data.substring(a + 1, b); // membuang tanda * dan # sehingga di dapat nilai dari arah angin
+    // arah_angin = "Inisiasi awal";
+
+    if (s_angin.equals("1")) { // jika nilai dari sensor 1 maka arah angin utara
+      arah_angin = "utara     ";
     }
-    delay(1000);
+    if (s_angin.equals("2")) {
+      arah_angin = "timur laut";
+    }
+    if (s_angin.equals("3")) {
+      arah_angin = "timur     ";
+    }
+    if (s_angin.equals("4")) {
+      arah_angin = "tenggara  ";
+    }
+    if (s_angin.equals("5")) {
+      arah_angin = "selatan   ";
+    }
+    if (s_angin.equals("6")) {
+      arah_angin = "barat daya";
+    }
+    if (s_angin.equals("7")) {
+      arah_angin = "barat     ";
+    }
+    if (s_angin.equals("8")) {
+      arah_angin = "barat laut";
+    }
+
+    printf("UART: %s \n", s_angin.c_str());
+    printf("Arah angin: %s \n", arah_angin.c_str());
+  }
+  delay(1000);
 }
