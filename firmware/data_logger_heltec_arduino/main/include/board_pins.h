@@ -101,10 +101,10 @@
         #define I2C_HW_ADDR_DISPLAY_SSD1306 0x3C
         // --- 2.1.3. I2C MODULE: DEVICE ENERGY MONITOR - INA219 ---
         #define BAT_DEVICE_MONITORING_TAG   "INA219_DEVICE_MONITOR_1"
-        #define I2C_HW_ADDR_SENSOR_INA219_1
+        #define I2C_HW_ADDR_SENSOR_INA219_1 0x40
         // --- 2.1.4. I2C MODULE: CHARGING MONITOR - INA219 ---
         #define BAT_CHARGER_MONITORING_TAG "INA219_CHARGER_MONITOR_2"
-        #define I2C_HW_ADDR_SENSOR_INA219_2
+        #define I2C_HW_ADDR_SENSOR_INA219_2 0x41
 
         // - 3. UART PERIPHERALS (Sensors and GPS) ---
         // -- 3.1. UART 1 (Hardware) - TB600B H2S Sensor: ✅ TESTED

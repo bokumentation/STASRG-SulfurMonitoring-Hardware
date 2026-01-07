@@ -1,16 +1,15 @@
-#include "HardwareSerial.h"
 #include "esp32-hal.h"
 #include <Arduino.h>
 #include "SoftwareSerial.h"
 
-#define RX2 21 // pin RX2 [PUTIH TX]
-#define TX2 20 // pin TX2 [KUNING RX]
+// #define RX2 21 // pin RX2 [PUTIH TX]
+// #define TX2 20 // pin TX2 [KUNING RX]
 
 String data, arah_angin, s_angin;
 int a, b;
 
 #define BAUD_RATE 9600
-SoftwareSerial SerialSW(RX2, TX2);
+SoftwareSerial SerialSW(21, 20);
 
 void setup() {
   // Serial1.begin(9600, SERIAL_8N1, RX2, TX2);
