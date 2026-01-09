@@ -125,7 +125,8 @@
         #define PIN_SENSOR_ANEMOMETER_ADC 34 // ADC1_CH3: UNTESTED
         #define ANEMOMETER_TAG     "ANEMOMETER"
         
-        #define PIN_SENSOR_WIND_DIR_ADC   33 // ADC1_CH4: UNTESTED
+        #define PIN_SENSOR_WIND_DIR_TX   33 // ADC1_CH4: UNTESTED
+        #define PIN_SENSOR_WIND_DIR_RX   12 // ADC1_CH4: UNTESTED
 
         // - 5. BUTTON
         #define PIN_BTN_USER_KEY          0  // GPIO_0: USER KEY [UNTESTED]
@@ -139,3 +140,5 @@
 #endif // CONFIG_IDF_TARGET
 
 #define BAUD_RATE 9600
+#define SENSOR_TASK_PRIORITY 5
+#define ANEMOMETER_PIN_CFG   (void *)PIN_SENSOR_ANEMOMETER_ADC

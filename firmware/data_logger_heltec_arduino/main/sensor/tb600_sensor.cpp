@@ -1,8 +1,8 @@
 // tb600_sensor.cpp
-#include "tb600_sensor_cmd.h"
 #include "tb600_sensor.h"
 #include "driver/uart.h"
 #include "esp_log.h"
+#include "tb600_sensor_cmd.h"
 #include <board_pins.h>
 
 static esp_err_t tb600b_wait_for_data(uart_port_t uart_num, const char *tag);
@@ -48,8 +48,7 @@ static esp_err_t tb600b_wait_for_data(uart_port_t uart_num, const char *tag)
     return ESP_ERR_TIMEOUT;
 }
 
-esp_err_t tb600b_read_combined_data(uart_port_t uart_num, const uint8_t *command, size_t commandSize,
-                                    tb600b_combined_data_t *data_out)
+esp_err_t tb600b_read_combined_data(uart_port_t uart_num, const uint8_t *command, size_t commandSize, tb600b_combined_data_t *data_out)
 {
     const char *tag = (uart_num == UART_NUM_1) ? SENSOR_H2S_TAG : SENSOR_SO2_TAG;
     const int max_sync_attempts = TB600B_RESPONSE_LENGTH + 2;
@@ -135,6 +134,9 @@ parse_data:
     // Parse Humidity from bytes 10 and 11
     uint16_t rawHumidity = (uint16_t)((responseData[10] << 8) | responseData[11]);
     data_out->humidity_perc = (float)rawHumidity / 100.0f;
+    
+    // BELUM DITEST
+    // data_out->success = true;
 
     vTaskDelay(pdMS_TO_TICKS(100));
     return ESP_OK;
@@ -142,14 +144,15 @@ parse_data:
 
 tb600b_combined_data_t tb600b_get_data_safe(uart_port_t uart_num, const uint8_t *command, size_t commandSize)
 {
-    tb600b_combined_data_t data = {0,0,0,0}; // Zero-initialize the entire structure (T=0, H=0, Gas=0, Success=false)
+    tb600b_combined_data_t data = {0, 0, 0, 0};                                       // Zero-initialize the entire structure (T=0, H=0, Gas=0, Success=false)
     const char *tag = (uart_num == UART_NUM_1) ? "SENSOR_H2S_TAG" : "SENSOR_SO2_TAG"; // Placeholder for tag determination
 
     esp_err_t err = tb600b_read_combined_data(uart_num, command, commandSize, &data);
 
     if (err != ESP_OK) {
         ESP_LOGE(tag, "Failed to read data from sensor (Error: 0x%X). Returning zeroed structure.", err);
-    } else {
+    }
+    else {
         data.success = true;
     }
 

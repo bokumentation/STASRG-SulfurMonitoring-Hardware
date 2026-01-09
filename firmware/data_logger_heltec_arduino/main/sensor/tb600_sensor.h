@@ -24,15 +24,34 @@ static const int RX_BUF_SIZE = 128;
 
 #define TB600B_RESPONSE_HEADER_BYTE1 0xFF
 #define TB600B_RESPONSE_HEADER_BYTE2 0x87
-#define TB600B_RESPONSE_LENGTH 13
-#define TB600_TAG_UART_SENSOR "TB600_LIBS"
+#define TB600B_RESPONSE_LENGTH       13
+#define TB600_TAG_UART_SENSOR        "TB600_LIBS"
 
-// SENSOR DATA COMMAND
+/**
+ * @brief Inisialisasi UART untuk sensor TB600B/C.
+ * @param uart_num The UART port number to use (e.g., UART_NUM_1).
+ * @param tx_pin GPIO yang digunakan untuk transmisi (TX).
+ * @param rx_pin GPIO yang digunakan untuk penerimaan (RX).
+ * @param tag TAG untuk logging dan debugging.
+ * @return void
+ */
 void tb600b_init_uart(uart_port_t uart_num, int tx_pin, int rx_pin, const char *tag);
 
-
-esp_err_t tb600b_read_combined_data(uart_port_t uart_num, const uint8_t *command, size_t commandSize,
-                                    tb600b_combined_data_t *data_out);
+/**
+ * @brief Membaca data dari sensor TB600.
+ * @param uart_num The UART port number to use (e.g., UART_NUM_1).
+ * @param command Perintah byte array yang akan dikirim ke sensor.
+ * @param commandSize Ukuran dari array perintah.
+ * @param data_out Pointer ke struktur tb600b_combined_data_t untuk menyimpan data yang dibaca.
+ * @note Fungsi ini mengirim perintah ke sensor, menunggu respons, dan mengurai data yang diterima.
+ *       Pastikan untuk memanggil fungsi ini dalam konteks task FreeRTOS yang sesuai,
+ *       karena fungsi ini dapat memblokir hingga data diterima.
+ * @note Fungsi ini mengharapkan respons dalam format yang telah ditentukan oleh protokol TB600B/C.
+ *       Respons harus dimulai dengan header byte yang benar (0xFF, 0x87)
+ *       dan diakhiri dengan checksum yang valid.
+ * @return void
+ */
+esp_err_t tb600b_read_combined_data(uart_port_t uart_num, const uint8_t *command, size_t commandSize, tb600b_combined_data_t *data_out);
 
 /**
  * @brief Sends command, reads and parses sensor data, returning the data struct directly.
