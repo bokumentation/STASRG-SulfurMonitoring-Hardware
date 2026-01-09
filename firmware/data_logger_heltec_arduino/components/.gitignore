@@ -1,0 +1,12 @@
+# Folder
+.cache
+.vscode
+build/
+managed_components/
+backup/
+# arduino-esp32/
+
+# File
+dependencies.lock
+sdkconfig
+sdkconfig.old
