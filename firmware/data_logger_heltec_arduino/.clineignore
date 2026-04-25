@@ -77,7 +77,7 @@ venv.bak/
 /.git/
 
 # Clangd and compilation
-# /.clangd
+/.clangd
 /clangd.txt
 /.clang-format
 /.clang-tidy
