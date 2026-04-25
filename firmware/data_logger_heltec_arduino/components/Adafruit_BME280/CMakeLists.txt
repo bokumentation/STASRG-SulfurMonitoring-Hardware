@@ -1,7 +1,9 @@
+# Search all ".c" and ".cpp" file
+file(GLOB_RECURSE SOURCES "*.c" "*.cpp")
+
 idf_component_register(
-    SRCS "Adafruit_BME280.cpp"
-
+    SRCS ${SOURCES}
     INCLUDE_DIRS "."
-
-    REQUIRES arduino-esp32 Adafruit_Sensor Adafruit_BusIO
+    PRIV_REQUIRES arduino-esp32
+    REQUIRES Adafruit_BusIO Adafruit_Sensor
 )

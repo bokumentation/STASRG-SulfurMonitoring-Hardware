@@ -1,0 +1,34 @@
+# Clangd configuration for MacOS. Based on my MacOS username are "mac". The default ESP-IDF v5.5.1 uses clangd-19.
+# Documentation: https://clangd.llvm.org/config, https://docs.espressif.com/projects/espressif-ide/en/latest/additionalfeatures/clangd_cdt_support.html
+
+# Render "Doxygen" format. Only works on Clangd-22
+# Documentation:
+#     CommentFormat: Doxygen
+
+InlayHints:
+    ParameterNames: false
+
+Hover:
+    ShowAKA: false
+
+CompileFlags:
+    # Using QueryDriver for llvm clangd-22. Uncomment if not use esp-clangd.
+    # BuiltinHeaders: QueryDriver
+
+    CompilationDatabase: build/
+    Add:
+        # Replace "mac" with your actual OS username
+        - -isystem
+        - "/Users/mac/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include"
+
+        - -isystem
+        - "/Users/mac/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0"
+
+        - -isystem
+        - "/Users/mac/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/xtensa-esp-elf"
+
+        # Use CXX ISO Standard
+        # - -std=c++17
+
+    # Recommended: Remove GCC-specific flags that clangd doesn't recognize
+    Remove: [-m*, -f*]

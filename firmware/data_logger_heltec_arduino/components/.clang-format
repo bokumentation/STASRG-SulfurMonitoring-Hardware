@@ -1,0 +1,65 @@
+#
+# CLANG-FORMAT Configuration
+# Reference based on ESP-IDF Style Guide: https://docs.espressif.com/projects/esp-idf/en/stable/esp32/contribute/style-guide.html
+# Documentation: https://releases.llvm.org/19.1.0/tools/clang/docs/ClangFormat.html
+#
+
+---
+DisableFormat: true
+Language: Cpp
+BasedOnStyle: LLVM
+
+# --- Braces and Layout (ESP-IDF & AStyle OTBS) ---
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterClass: false # Attached braces for classes
+    AfterControlStatement: false # Attached braces for if/while/for
+    AfterEnum: false # Attached braces for enums
+    AfterFunction: true # Function braces on separate line
+    AfterNamespace: false # Attached braces for namespaces
+    AfterStruct: false # Attached braces for structs
+    AfterUnion: false # Attached braces for unions
+    BeforeCatch: false # Attached 'catch'
+    BeforeElse: false # Attached 'else'
+    IndentBraces: false # Do not indent braces
+
+    AfterCaseLabel: false # Keeps { on the same line as 'case:'
+    AfterObjCDeclaration: true
+    BeforeLambdaBody: false
+    BeforeWhile: false # Keeps { on the same line as 'do'
+    SplitEmptyFunction: true # Braces on separate lines for empty functions
+    SplitEmptyRecord: true # Braces on separate lines for empty structs
+    SplitEmptyNamespace: true # Braces on separate lines for empty namespaces
+
+# --- Constructor Exception ---
+# Allows: SpaceShip::SpaceShip(size_t crew) : crew(crew) { }
+AllowShortFunctionsOnASingleLine: None
+
+# --- Indentation and Whitespace (AStyle & ESP-IDF) ---
+IndentWidth: 4 # 4-space indentation
+AccessModifierOffset: -4
+UseTab: Never # Do not use tabs
+TabWidth: 4
+ColumnLimit: 120 # Max line length 120
+ContinuationIndentWidth: 4
+
+# --- Alignment (AStyle Options) ---
+DerivePointerAlignment: false
+PointerAlignment: Right # Align reference/pointer to name
+AllowShortBlocksOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: true
+
+# --- Horizontal Space (ESP-IDF Rules) ---
+SpaceBeforeParens: ControlStatements # Space after if/for/while
+SpaceBeforeAssignmentOperators: true # Space around binary operators
+SpaceAroundPointerQualifiers: Default
+SpacesInParentheses: false # Unpad parens
+SpacesInSquareBrackets: false
+
+# --- ESP-IDF Specifics ---
+IncludeBlocks: Preserve # Maintain order: C, POSIX, IDF, Private
+
+# Disable breaking long comments into multiple lines.
+ReflowComments: false
+CommentPragmas: "^ IWYU pragma:"
+---

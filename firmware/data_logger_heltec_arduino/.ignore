@@ -1,0 +1,93 @@
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*:Zone.Identifier
+
+# Editor and IDE
+/.cache/
+/.vscode/
+/.zed
+
+# ESP-IDF Build and Generated Files
+/build/
+/managed_components/
+/dependencies.lock
+/sdkconfig
+/sdkconfig.old
+/sdkconfig.defaults.bak
+/compile_commands.json
+/.cmake/
+/.ninja_deps
+/.ninja_log
+
+# Backup and Extras
+/backup/
+/extras/
+
+# Environment and Configuration
+.env
+.env.local
+.env.test
+settings.json
+
+# Log files
+*.log
+monitor_log.txt
+serial_log.txt
+
+# Binary and Object Files
+*.bin
+*.elf
+*.map
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.dll
+
+# Python cache and virtual environment
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Documentation (not needed for code analysis)
+*.pdf
+*.doc
+*.docx
+
+# Git
+/.git/
+
+# Clangd and compilation
+/clangd.txt
+/.clang-format
+/.clang-tidy
+
+# Pre-commit
+/.pre-commit-config.yaml
+
+# Temporary files
+*.tmp
+*.temp
+*~
+\#*#
+.#*
+
+# Project-specific generated files
+/firmware.bin
+/partition_table.bin
+/bootloader.bin
+/ota_data_initial.bin

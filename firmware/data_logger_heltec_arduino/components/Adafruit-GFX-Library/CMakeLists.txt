@@ -1,11 +1,8 @@
-# Adafruit GFX Library
-# https://github.com/adafruit/Adafruit-GFX-Library
-# BSD License
+file(GLOB_RECURSE SOURCES "*.c" "*.cpp")
 
-cmake_minimum_required(VERSION 3.5)
-
-idf_component_register(SRCS "Adafruit_GFX.cpp" "Adafruit_GrayOLED.cpp" "Adafruit_SPITFT.cpp" "glcdfont.c"
-                       INCLUDE_DIRS "."
-                       REQUIRES arduino-esp32 Adafruit_BusIO)
-
-project(Adafruit-GFX-Library)
+idf_component_register(
+    SRCS ${SOURCES}
+    INCLUDE_DIRS "."
+    REQUIRES Adafruit_BusIO
+    PRIV_REQUIRES arduino-esp32
+)

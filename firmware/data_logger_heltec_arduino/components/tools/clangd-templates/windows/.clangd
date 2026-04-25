@@ -1,0 +1,33 @@
+# Clangd configuration for Windows. Based on "C:\\Espressif" folder instalation. The default ESP-IDF v5.5.1 uses clangd-19.
+# Documentation: https://clangd.llvm.org/config, https://docs.espressif.com/projects/espressif-ide/en/latest/additionalfeatures/clangd_cdt_support.html
+
+# Render "Doxygen" format. Only works on clangd-22
+# Documentation:
+#     CommentFormat: Doxygen
+
+InlayHints:
+    ParameterNames: false
+
+Hover:
+    ShowAKA: false
+
+CompileFlags:
+    # Using QueryDriver for llvm clangd-22. Uncomment if not use esp-clangd.
+    # BuiltinHeaders: QueryDriver
+
+    CompilationDatabase: build/
+    Add:
+        # If your tools are in C:/Users/<User>/.espressif, update this path.
+        - -isystem
+        - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include"
+
+        - -isystem
+        - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include\\c++\\14.2.0"
+
+        - -isystem
+        - "C:\\Espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\xtensa-esp-elf\\include\\c++\\14.2.0\\xtensa-esp-elf"
+
+        # Use CXX ISO Standard
+        # - -std=c++17
+
+    Remove: [-m*, -f*]

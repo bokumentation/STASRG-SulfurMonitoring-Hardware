@@ -1,11 +1,119 @@
-# Folder
-.cache
-.vscode
-build/
-managed_components/
-backup/
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*:Zone.Identifier
 
-# File
-dependencies.lock
-sdkconfig
-sdkconfig.old
+# Editor and IDE
+/.cache/
+/.vscode/
+/.zed/
+/.idea/
+*.swp
+*.swo
+*~
+.editorconfig
+
+# ESP-IDF Build and Generated Files
+/build/
+/managed_components/
+/dependencies.lock
+/sdkconfig
+/sdkconfig.old
+/sdkconfig.defaults.bak
+/compile_commands.json
+/.cmake/
+/.ninja_deps
+/.ninja_log
+/dist/
+
+# ESP-IDF Log Files
+build/log/
+idf_py_stderr_output_*
+idf_py_stdout_output_*
+
+# Binary and Object Files
+*.bin
+*.elf
+*.map
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.dll
+*.lib
+
+# ESP-IDF Flash Files
+firmware.bin
+partition_table.bin
+bootloader.bin
+ota_data_initial.bin
+
+# Python Cache and Virtual Environment
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment and Configuration
+.env
+.env.local
+.env.test
+settings.json
+
+# Log Files
+*.log
+monitor_log.txt
+serial_log.txt
+
+# Documentation (not needed for code analysis)
+*.pdf
+*.doc
+*.docx
+
+# Git
+/.git/
+
+# Clangd and Compilation
+/.clangd
+/clangd.txt
+/.clang-format
+/.clang-tidy
+
+# Pre-commit
+/.pre-commit-config.yaml
+
+# AI and MCP Tools
+/.cursor/
+/.github/
+.claude/
+.claude.json
+.claude.json.backup
+
+# Temporary Files
+*.tmp
+*.temp
+*~
+\#*#
+.#*
+
+# Backup and Extras
+/backup/
+/extras/

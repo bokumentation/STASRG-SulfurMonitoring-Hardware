@@ -1,11 +1,8 @@
-# Adafruit Bus IO Library
-# https://github.com/adafruit/Adafruit_BusIO
-# MIT License
+file(GLOB_RECURSE SOURCES "*.c" "*.cpp")
 
-cmake_minimum_required(VERSION 3.5)
-
-idf_component_register(SRCS "Adafruit_SSD1306.cpp" 
-                       INCLUDE_DIRS "."
-                       REQUIRES arduino-esp32 Adafruit-GFX-Library)
-
-project(Adafruit_SSD1306)
+idf_component_register(
+    SRCS ${SOURCES}
+    INCLUDE_DIRS "."
+    PRIV_REQUIRES arduino-esp32
+    REQUIRES Adafruit-GFX-Library
+)

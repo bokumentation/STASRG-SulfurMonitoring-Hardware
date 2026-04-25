@@ -1,7 +1,8 @@
+file(GLOB_RECURSE SOURCES "*.c" "*.cpp")
+
 idf_component_register(
-    SRCS "Adafruit_INA219.cpp"
-
+    SRCS ${SOURCES}
     INCLUDE_DIRS "."
-
-    REQUIRES arduino-esp32 Adafruit-GFX-Library Adafruit_SSD1306 Adafruit_BusIO
+    PRIV_REQUIRES arduino-esp32
+    REQUIRES Adafruit_BusIO
 )

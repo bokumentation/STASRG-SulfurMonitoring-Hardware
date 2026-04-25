@@ -65,9 +65,10 @@ Adafruit_GrayOLED::Adafruit_GrayOLED(uint8_t bpp, uint16_t w, uint16_t h,
                                      TwoWire *twi, int16_t rst_pin,
                                      uint32_t clkDuring, uint32_t clkAfter)
     : Adafruit_GFX(w, h), i2c_preclk(clkDuring), i2c_postclk(clkAfter),
-      buffer(NULL), dcPin(-1), csPin(-1), rstPin(rst_pin), _bpp(bpp) {
-  i2c_dev = NULL;
-  _theWire = twi;
+      buffer(NULL), dcPin(-1), csPin(-1), rstPin(rst_pin), _bpp(bpp)
+{
+    i2c_dev = NULL;
+    _theWire = twi;
 }
 
 /*!
@@ -102,9 +103,10 @@ Adafruit_GrayOLED::Adafruit_GrayOLED(uint8_t bpp, uint16_t w, uint16_t h,
                                      int16_t dc_pin, int16_t rst_pin,
                                      int16_t cs_pin)
     : Adafruit_GFX(w, h), dcPin(dc_pin), csPin(cs_pin), rstPin(rst_pin),
-      _bpp(bpp) {
+      _bpp(bpp)
+{
 
-  spi_dev = new Adafruit_SPIDevice(cs_pin, sclk_pin, -1, mosi_pin, 1000000);
+    spi_dev = new Adafruit_SPIDevice(cs_pin, sclk_pin, -1, mosi_pin, 1000000);
 }
 
 /*!
@@ -138,24 +140,28 @@ Adafruit_GrayOLED::Adafruit_GrayOLED(uint8_t bpp, uint16_t w, uint16_t h,
                                      int16_t rst_pin, int16_t cs_pin,
                                      uint32_t bitrate)
     : Adafruit_GFX(w, h), dcPin(dc_pin), csPin(cs_pin), rstPin(rst_pin),
-      _bpp(bpp) {
+      _bpp(bpp)
+{
 
-  spi_dev = new Adafruit_SPIDevice(cs_pin, bitrate, SPI_BITORDER_MSBFIRST,
-                                   SPI_MODE0, spi);
+    spi_dev = new Adafruit_SPIDevice(cs_pin, bitrate, SPI_BITORDER_MSBFIRST,
+                                     SPI_MODE0, spi);
 }
 
 /*!
     @brief  Destructor for Adafruit_GrayOLED object.
 */
-Adafruit_GrayOLED::~Adafruit_GrayOLED(void) {
-  if (buffer) {
-    free(buffer);
-    buffer = NULL;
-  }
-  if (spi_dev)
-    delete spi_dev;
-  if (i2c_dev)
-    delete i2c_dev;
+Adafruit_GrayOLED::~Adafruit_GrayOLED(void)
+{
+    if (buffer) {
+        free(buffer);
+        buffer = NULL;
+    }
+    if (spi_dev) {
+        delete spi_dev;
+    }
+    if (i2c_dev) {
+        delete i2c_dev;
+    }
 }
 
 // LOW-LEVEL UTILS ---------------------------------------------------------
@@ -165,14 +171,15 @@ Adafruit_GrayOLED::~Adafruit_GrayOLED(void) {
    needed.
     @param c The single byte command
 */
-void Adafruit_GrayOLED::oled_command(uint8_t c) {
-  if (i2c_dev) {                // I2C
-    uint8_t buf[2] = {0x00, c}; // Co = 0, D/C = 0
-    i2c_dev->write(buf, 2);
-  } else { // SPI (hw or soft) -- transaction started in calling function
-    digitalWrite(dcPin, LOW);
-    spi_dev->write(&c, 1);
-  }
+void Adafruit_GrayOLED::oled_command(uint8_t c)
+{
+    if (i2c_dev) {                // I2C
+        uint8_t buf[2] = {0x00, c}; // Co = 0, D/C = 0
+        i2c_dev->write(buf, 2);
+    } else { // SPI (hw or soft) -- transaction started in calling function
+        digitalWrite(dcPin, LOW);
+        spi_dev->write(&c, 1);
+    }
 }
 
 // Issue list of commands to GrayOLED
@@ -184,19 +191,20 @@ void Adafruit_GrayOLED::oled_command(uint8_t c) {
     @returns True for success on ability to write the data in I2C.
 */
 
-bool Adafruit_GrayOLED::oled_commandList(const uint8_t *c, uint8_t n) {
-  if (i2c_dev) {            // I2C
-    uint8_t dc_byte = 0x00; // Co = 0, D/C = 0
-    if (!i2c_dev->write((uint8_t *)c, n, true, &dc_byte, 1)) {
-      return false;
+bool Adafruit_GrayOLED::oled_commandList(const uint8_t *c, uint8_t n)
+{
+    if (i2c_dev) {            // I2C
+        uint8_t dc_byte = 0x00; // Co = 0, D/C = 0
+        if (!i2c_dev->write((uint8_t *)c, n, true, &dc_byte, 1)) {
+            return false;
+        }
+    } else { // SPI -- transaction started in calling function
+        digitalWrite(dcPin, LOW);
+        if (!spi_dev->write((uint8_t *)c, n)) {
+            return false;
+        }
     }
-  } else { // SPI -- transaction started in calling function
-    digitalWrite(dcPin, LOW);
-    if (!spi_dev->write((uint8_t *)c, n)) {
-      return false;
-    }
-  }
-  return true;
+    return true;
 }
 
 // ALLOCATE & INIT DISPLAY -------------------------------------------------
@@ -221,48 +229,49 @@ bool Adafruit_GrayOLED::oled_commandList(const uint8_t *c, uint8_t n) {
             proceeding.
     @note   MUST call this function before any drawing or updates!
 */
-bool Adafruit_GrayOLED::_init(uint8_t addr, bool reset) {
+bool Adafruit_GrayOLED::_init(uint8_t addr, bool reset)
+{
 
-  // attempt to malloc the bitmap framebuffer
-  if ((!buffer) &&
-      !(buffer = (uint8_t *)malloc(_bpp * WIDTH * ((HEIGHT + 7) / 8)))) {
-    return false;
-  }
-
-  // Reset OLED if requested and reset pin specified in constructor
-  if (reset && (rstPin >= 0)) {
-    pinMode(rstPin, OUTPUT);
-    digitalWrite(rstPin, HIGH);
-    delay(10);                  // VDD goes high at start, pause
-    digitalWrite(rstPin, LOW);  // Bring reset low
-    delay(10);                  // Wait 10 ms
-    digitalWrite(rstPin, HIGH); // Bring out of reset
-    delay(10);
-  }
-
-  // Setup pin directions
-  if (_theWire) { // using I2C
-    i2c_dev = new Adafruit_I2CDevice(addr, _theWire);
-    // look for i2c address:
-    if (!i2c_dev || !i2c_dev->begin()) {
-      return false;
+    // attempt to malloc the bitmap framebuffer
+    if ((!buffer) &&
+            !(buffer = (uint8_t *)malloc(_bpp * WIDTH * ((HEIGHT + 7) / 8)))) {
+        return false;
     }
-  } else { // Using one of the SPI modes, either soft or hardware
-    if (!spi_dev || !spi_dev->begin()) {
-      return false;
+
+    // Reset OLED if requested and reset pin specified in constructor
+    if (reset && (rstPin >= 0)) {
+        pinMode(rstPin, OUTPUT);
+        digitalWrite(rstPin, HIGH);
+        delay(10);                  // VDD goes high at start, pause
+        digitalWrite(rstPin, LOW);  // Bring reset low
+        delay(10);                  // Wait 10 ms
+        digitalWrite(rstPin, HIGH); // Bring out of reset
+        delay(10);
     }
-    pinMode(dcPin, OUTPUT); // Set data/command pin as output
-  }
 
-  clearDisplay();
+    // Setup pin directions
+    if (_theWire) { // using I2C
+        i2c_dev = new Adafruit_I2CDevice(addr, _theWire);
+        // look for i2c address:
+        if (!i2c_dev || !i2c_dev->begin()) {
+            return false;
+        }
+    } else { // Using one of the SPI modes, either soft or hardware
+        if (!spi_dev || !spi_dev->begin()) {
+            return false;
+        }
+        pinMode(dcPin, OUTPUT); // Set data/command pin as output
+    }
 
-  // set max dirty window
-  window_x1 = 0;
-  window_y1 = 0;
-  window_x2 = WIDTH - 1;
-  window_y2 = HEIGHT - 1;
+    clearDisplay();
 
-  return true; // Success
+    // set max dirty window
+    window_x1 = 0;
+    window_y1 = 0;
+    window_x2 = WIDTH - 1;
+    window_y2 = HEIGHT - 1;
+
+    return true; // Success
 }
 
 // DRAWING FUNCTIONS -------------------------------------------------------
@@ -282,57 +291,58 @@ bool Adafruit_GrayOLED::_init(uint8_t addr, bool reset) {
             Follow up with a call to display(), or with other graphics
             commands as needed by one's own application.
 */
-void Adafruit_GrayOLED::drawPixel(int16_t x, int16_t y, uint16_t color) {
-  if ((x >= 0) && (x < width()) && (y >= 0) && (y < height())) {
-    // Pixel is in-bounds. Rotate coordinates if needed.
-    switch (getRotation()) {
-    case 1:
-      grayoled_swap(x, y);
-      x = WIDTH - x - 1;
-      break;
-    case 2:
-      x = WIDTH - x - 1;
-      y = HEIGHT - y - 1;
-      break;
-    case 3:
-      grayoled_swap(x, y);
-      y = HEIGHT - y - 1;
-      break;
-    }
+void Adafruit_GrayOLED::drawPixel(int16_t x, int16_t y, uint16_t color)
+{
+    if ((x >= 0) && (x < width()) && (y >= 0) && (y < height())) {
+        // Pixel is in-bounds. Rotate coordinates if needed.
+        switch (getRotation()) {
+        case 1:
+            grayoled_swap(x, y);
+            x = WIDTH - x - 1;
+            break;
+        case 2:
+            x = WIDTH - x - 1;
+            y = HEIGHT - y - 1;
+            break;
+        case 3:
+            grayoled_swap(x, y);
+            y = HEIGHT - y - 1;
+            break;
+        }
 
-    // adjust dirty window
-    window_x1 = min(window_x1, x);
-    window_y1 = min(window_y1, y);
-    window_x2 = max(window_x2, x);
-    window_y2 = max(window_y2, y);
+        // adjust dirty window
+        window_x1 = min(window_x1, x);
+        window_y1 = min(window_y1, y);
+        window_x2 = max(window_x2, x);
+        window_y2 = max(window_y2, y);
 
-    if (_bpp == 1) {
-      switch (color) {
-      case MONOOLED_WHITE:
-        buffer[x + (y / 8) * WIDTH] |= (1 << (y & 7));
-        break;
-      case MONOOLED_BLACK:
-        buffer[x + (y / 8) * WIDTH] &= ~(1 << (y & 7));
-        break;
-      case MONOOLED_INVERSE:
-        buffer[x + (y / 8) * WIDTH] ^= (1 << (y & 7));
-        break;
-      }
+        if (_bpp == 1) {
+            switch (color) {
+            case MONOOLED_WHITE:
+                buffer[x + (y / 8) * WIDTH] |= (1 << (y & 7));
+                break;
+            case MONOOLED_BLACK:
+                buffer[x + (y / 8) * WIDTH] &= ~(1 << (y & 7));
+                break;
+            case MONOOLED_INVERSE:
+                buffer[x + (y / 8) * WIDTH] ^= (1 << (y & 7));
+                break;
+            }
+        }
+        if (_bpp == 4) {
+            uint8_t *pixelptr = &buffer[x / 2 + (y * WIDTH / 2)];
+            // Serial.printf("(%d, %d) -> offset %d\n", x, y, x/2 + (y * WIDTH / 2));
+            if (x % 2 == 0) { // even, left nibble
+                uint8_t t = pixelptr[0] & 0x0F;
+                t |= (color & 0xF) << 4;
+                pixelptr[0] = t;
+            } else { // odd, right lower nibble
+                uint8_t t = pixelptr[0] & 0xF0;
+                t |= color & 0xF;
+                pixelptr[0] = t;
+            }
+        }
     }
-    if (_bpp == 4) {
-      uint8_t *pixelptr = &buffer[x / 2 + (y * WIDTH / 2)];
-      // Serial.printf("(%d, %d) -> offset %d\n", x, y, x/2 + (y * WIDTH / 2));
-      if (x % 2 == 0) { // even, left nibble
-        uint8_t t = pixelptr[0] & 0x0F;
-        t |= (color & 0xF) << 4;
-        pixelptr[0] = t;
-      } else { // odd, right lower nibble
-        uint8_t t = pixelptr[0] & 0xF0;
-        t |= color & 0xF;
-        pixelptr[0] = t;
-      }
-    }
-  }
 }
 
 /*!
@@ -341,13 +351,14 @@ void Adafruit_GrayOLED::drawPixel(int16_t x, int16_t y, uint16_t color) {
             Follow up with a call to display(), or with other graphics
             commands as needed by one's own application.
 */
-void Adafruit_GrayOLED::clearDisplay(void) {
-  memset(buffer, 0, _bpp * WIDTH * ((HEIGHT + 7) / 8));
-  // set max dirty window
-  window_x1 = 0;
-  window_y1 = 0;
-  window_x2 = WIDTH - 1;
-  window_y2 = HEIGHT - 1;
+void Adafruit_GrayOLED::clearDisplay(void)
+{
+    memset(buffer, 0, _bpp * WIDTH * ((HEIGHT + 7) / 8));
+    // set max dirty window
+    window_x1 = 0;
+    window_y1 = 0;
+    window_x2 = WIDTH - 1;
+    window_y2 = HEIGHT - 1;
 }
 
 /*!
@@ -361,26 +372,27 @@ void Adafruit_GrayOLED::clearDisplay(void) {
     @note   Reads from buffer contents; may not reflect current contents of
             screen if display() has not been called.
 */
-bool Adafruit_GrayOLED::getPixel(int16_t x, int16_t y) {
-  if ((x >= 0) && (x < width()) && (y >= 0) && (y < height())) {
-    // Pixel is in-bounds. Rotate coordinates if needed.
-    switch (getRotation()) {
-    case 1:
-      grayoled_swap(x, y);
-      x = WIDTH - x - 1;
-      break;
-    case 2:
-      x = WIDTH - x - 1;
-      y = HEIGHT - y - 1;
-      break;
-    case 3:
-      grayoled_swap(x, y);
-      y = HEIGHT - y - 1;
-      break;
+bool Adafruit_GrayOLED::getPixel(int16_t x, int16_t y)
+{
+    if ((x >= 0) && (x < width()) && (y >= 0) && (y < height())) {
+        // Pixel is in-bounds. Rotate coordinates if needed.
+        switch (getRotation()) {
+        case 1:
+            grayoled_swap(x, y);
+            x = WIDTH - x - 1;
+            break;
+        case 2:
+            x = WIDTH - x - 1;
+            y = HEIGHT - y - 1;
+            break;
+        case 3:
+            grayoled_swap(x, y);
+            y = HEIGHT - y - 1;
+            break;
+        }
+        return (buffer[x + (y / 8) * WIDTH] & (1 << (y & 7)));
     }
-    return (buffer[x + (y / 8) * WIDTH] & (1 << (y & 7)));
-  }
-  return false; // Pixel out of bounds
+    return false; // Pixel out of bounds
 }
 
 /*!
@@ -388,7 +400,10 @@ bool Adafruit_GrayOLED::getPixel(int16_t x, int16_t y) {
     @return Pointer to an unsigned 8-bit array, column-major, columns padded
             to full byte boundary if needed.
 */
-uint8_t *Adafruit_GrayOLED::getBuffer(void) { return buffer; }
+uint8_t *Adafruit_GrayOLED::getBuffer(void)
+{
+    return buffer;
+}
 
 // OTHER HARDWARE SETTINGS -------------------------------------------------
 
@@ -404,8 +419,9 @@ uint8_t *Adafruit_GrayOLED::getBuffer(void) { return buffer; }
             enabled, drawing MONOOLED_BLACK (value 0) pixels will actually draw
    white, MONOOLED_WHITE (value 1) will draw black.
 */
-void Adafruit_GrayOLED::invertDisplay(bool i) {
-  oled_command(i ? GRAYOLED_INVERTDISPLAY : GRAYOLED_NORMALDISPLAY);
+void Adafruit_GrayOLED::invertDisplay(bool i)
+{
+    oled_command(i ? GRAYOLED_INVERTDISPLAY : GRAYOLED_NORMALDISPLAY);
 }
 
 /*!
@@ -414,9 +430,10 @@ void Adafruit_GrayOLED::invertDisplay(bool i) {
     @note   This has an immediate effect on the display, no need to call the
             display() function -- buffer contents are not changed.
 */
-void Adafruit_GrayOLED::setContrast(uint8_t level) {
-  uint8_t cmd[] = {GRAYOLED_SETCONTRAST, level};
-  oled_commandList(cmd, 2);
+void Adafruit_GrayOLED::setContrast(uint8_t level)
+{
+    uint8_t cmd[] = {GRAYOLED_SETCONTRAST, level};
+    oled_commandList(cmd, 2);
 }
 
 #endif /* ATTIN85 not supported */

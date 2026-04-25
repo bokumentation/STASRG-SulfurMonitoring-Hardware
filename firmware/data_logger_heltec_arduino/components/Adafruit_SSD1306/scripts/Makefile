@@ -30,4 +30,3 @@ splash.h: make_splash.py splash1.png splash2.png
 
 clean:
 	rm -f splash.h
-

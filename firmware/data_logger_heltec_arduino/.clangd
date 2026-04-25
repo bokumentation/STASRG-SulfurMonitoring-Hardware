@@ -1,3 +1,10 @@
+# Clangd configuration for Linux. Based on my Linux username are "loq". The default ESP-IDF v6.0 uses clangd.
+# Documentation: https://clangd.llvm.org/config, https://docs.espressif.com/projects/espressif-ide/en/latest/additionalfeatures/clangd_cdt_support.html
+
+# Render "Doxygen" format. Only works on Clangd-22
+Documentation:
+    CommentFormat: Doxygen
+
 InlayHints:
     ParameterNames: false
 
@@ -5,18 +12,18 @@ Hover:
     ShowAKA: false
 
 CompileFlags:
+    # Using QueryDriver for llvm clangd-22. Uncomment if not use esp-clangd.
+    BuiltinHeaders: QueryDriver
+
     CompilationDatabase: build/
-
     Add:
-        # REPLACE THIS "loq" with your actual OS username
-
         - -isystem
-        - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include"
+        - /home/loq/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/14.2.0/include
+        - -std=c++17
+        - -xc++
+        - -Wformat
+        - -Werror=format
+        - -Wall
+        - -Wextra
 
-        - -isystem
-        - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0"
-
-        - -isystem
-        - "/home/loq/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/xtensa-esp-elf"
-
-    Remove: [-m*, -f*]
+    Remove: [-m*, -f*, -mlong-calls]

@@ -1,7 +1,7 @@
+file(GLOB_RECURSE SOURCES "*.c" "*.cpp")
+
 idf_component_register(
-    SRCS "Adafruit_Sensor.cpp"
-
+    SRCS ${SOURCES}
     INCLUDE_DIRS "."
-
-    REQUIRES arduino-esp32
+    PRIV_REQUIRES arduino-esp32
 )

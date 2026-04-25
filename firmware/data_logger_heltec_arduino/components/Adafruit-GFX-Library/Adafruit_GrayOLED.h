@@ -47,54 +47,54 @@
 */
 class Adafruit_GrayOLED : public Adafruit_GFX {
 public:
-  Adafruit_GrayOLED(uint8_t bpp, uint16_t w, uint16_t h, TwoWire *twi = &Wire,
-                    int16_t rst_pin = -1, uint32_t preclk = 400000,
-                    uint32_t postclk = 100000);
-  Adafruit_GrayOLED(uint8_t bpp, uint16_t w, uint16_t h, int16_t mosi_pin,
-                    int16_t sclk_pin, int16_t dc_pin, int16_t rst_pin,
-                    int16_t cs_pin);
-  Adafruit_GrayOLED(uint8_t bpp, uint16_t w, uint16_t h, SPIClass *spi,
-                    int16_t dc_pin, int16_t rst_pin, int16_t cs_pin,
-                    uint32_t bitrate = 8000000UL);
+    Adafruit_GrayOLED(uint8_t bpp, uint16_t w, uint16_t h, TwoWire *twi = &Wire,
+                      int16_t rst_pin = -1, uint32_t preclk = 400000,
+                      uint32_t postclk = 100000);
+    Adafruit_GrayOLED(uint8_t bpp, uint16_t w, uint16_t h, int16_t mosi_pin,
+                      int16_t sclk_pin, int16_t dc_pin, int16_t rst_pin,
+                      int16_t cs_pin);
+    Adafruit_GrayOLED(uint8_t bpp, uint16_t w, uint16_t h, SPIClass *spi,
+                      int16_t dc_pin, int16_t rst_pin, int16_t cs_pin,
+                      uint32_t bitrate = 8000000UL);
 
-  ~Adafruit_GrayOLED(void);
+    ~Adafruit_GrayOLED(void);
 
-  /**
-   @brief The function that sub-classes define that writes out the buffer to
-   the display over I2C or SPI
-   **/
-  virtual void display(void) = 0;
-  void clearDisplay(void);
-  void invertDisplay(bool i);
-  void setContrast(uint8_t contrastlevel);
-  void drawPixel(int16_t x, int16_t y, uint16_t color);
-  bool getPixel(int16_t x, int16_t y);
-  uint8_t *getBuffer(void);
+    /**
+     @brief The function that sub-classes define that writes out the buffer to
+     the display over I2C or SPI
+     **/
+    virtual void display(void) = 0;
+    void clearDisplay(void);
+    void invertDisplay(bool i);
+    void setContrast(uint8_t contrastlevel);
+    void drawPixel(int16_t x, int16_t y, uint16_t color);
+    bool getPixel(int16_t x, int16_t y);
+    uint8_t *getBuffer(void);
 
-  void oled_command(uint8_t c);
-  bool oled_commandList(const uint8_t *c, uint8_t n);
+    void oled_command(uint8_t c);
+    bool oled_commandList(const uint8_t *c, uint8_t n);
 
 protected:
-  bool _init(uint8_t i2caddr = 0x3C, bool reset = true);
+    bool _init(uint8_t i2caddr = 0x3C, bool reset = true);
 
-  Adafruit_SPIDevice *spi_dev = NULL; ///< The SPI interface BusIO device
-  Adafruit_I2CDevice *i2c_dev = NULL; ///< The I2C interface BusIO device
-  int32_t i2c_preclk = 400000,        ///< Configurable 'high speed' I2C rate
-      i2c_postclk = 100000;           ///< Configurable 'low speed' I2C rate
-  uint8_t *buffer = NULL; ///< Internal 1:1 framebuffer of display mem
+    Adafruit_SPIDevice *spi_dev = NULL; ///< The SPI interface BusIO device
+    Adafruit_I2CDevice *i2c_dev = NULL; ///< The I2C interface BusIO device
+    int32_t i2c_preclk = 400000,        ///< Configurable 'high speed' I2C rate
+            i2c_postclk = 100000;           ///< Configurable 'low speed' I2C rate
+    uint8_t *buffer = NULL; ///< Internal 1:1 framebuffer of display mem
 
-  int16_t window_x1, ///< Dirty tracking window minimum x
-      window_y1,     ///< Dirty tracking window minimum y
-      window_x2,     ///< Dirty tracking window maximum x
-      window_y2;     ///< Dirty tracking window maximum y
+    int16_t window_x1, ///< Dirty tracking window minimum x
+            window_y1,     ///< Dirty tracking window minimum y
+            window_x2,     ///< Dirty tracking window maximum x
+            window_y2;     ///< Dirty tracking window maximum y
 
-  int dcPin,  ///< The Arduino pin connected to D/C (for SPI)
-      csPin,  ///< The Arduino pin connected to CS (for SPI)
-      rstPin; ///< The Arduino pin connected to reset (-1 if unused)
+    int dcPin,  ///< The Arduino pin connected to D/C (for SPI)
+        csPin,  ///< The Arduino pin connected to CS (for SPI)
+        rstPin; ///< The Arduino pin connected to reset (-1 if unused)
 
-  uint8_t _bpp = 1; ///< Bits per pixel color for this display
+    uint8_t _bpp = 1; ///< Bits per pixel color for this display
 private:
-  TwoWire *_theWire = NULL; ///< The underlying hardware I2C
+    TwoWire *_theWire = NULL; ///< The underlying hardware I2C
 };
 
 #endif // end __AVR_ATtiny85__ __AVR_ATtiny84__
