@@ -6,6 +6,14 @@ clone this repo with the submodules
 git clone --recursive https://github.com/bokumentation/STASRG-SulfurMonitoring-Hardware.git
 ```
 
+## to-do-list
+
+- memisahkan firmware dari repo ini
+    - receiver
+    - transmitter
+    - dummy-uart
+- membuat repo sendiri libs untuk kicad dan dibuat submodules
+
 # ghostl + ESP32-S3: The `-mtext-section-literals` Fix
 
 ## The Problem
