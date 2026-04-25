@@ -1,67 +1,46 @@
-#include "esp32-hal.h"
+// main.cpp
+// --- SYSTEM INCLUDE ----
 #include <Arduino.h>
-#include "SoftwareSerial.h"
+#include <Wire.h>
+#include <esp32-hal.h>
+#include <freertos/idf_additions.h>
+#include <freertos/projdefs.h>
 
-#define RX3 21 // pin RX3 [PUTIH TX]
-#define TX3 20 // pin TX3 [KUNING RX]
+// --- USER INCLUDE ----
+#include "board_pins.h"  // Definisi Pin yang dipakai
+#include "sensor_task.h" // Header kode sensor
+#include "shared_data.h" // Data sensor bersama
 
-String data, arah_angin, s_angin;
-int a, b;
+// --- FUNGSI UTAMA ESP-IDF ---
+extern "C" void app_main()
+{
+    initArduino();
+    Serial.begin(115200);                 // Memastikan UART USB Serial Monitor terinisialisasi
+    Wire.begin(PIN_I2C_SDA, PIN_I2C_SCL); // Inisialisasi I2C
 
-#define BAUD_RATE 9600
-SoftwareSerial SerialSW(RX3, TX3);
+    // 1. Membuat Task fungsi membaca sensor
+    xTaskCreate(sensor_reading, "Gas_Sensor_Task", 4096, NULL, SENSOR_TASK_PRIORITY, NULL);
 
-void setup() {
-  // Serial1.begin(9600, SERIAL_8N1, RX3, TX3);
-  SerialSW.begin(BAUD_RATE);
-  // .begin(BAUD_RATE);
-  printf("hello world \n");
-}
+    // 2. Membuat Task fungsi membaca anemometer
+    xTaskCreate(anemometer_task, "Anemometer_Task", 2048, ANEMOMETER_PIN_CFG, SENSOR_TASK_PRIORITY + 1, NULL);
 
-void loop() {
-  printf("Di dalam fungsi loops \n");
-  printf("Jika serial1.available: \n");
+    // 3. Membuat Task fungsi membaca battery
+    xTaskCreate(batteryTask, "Battery_Task", 4096, NULL, 2, NULL);
 
-  if (SerialSW.available()) // Jika ada data yang diterima dari sensor
-  {
-    data = SerialSW.readString(); // data yang diterima dari sensor berawalan tanda * dan diakhiri tanda #, contoh *1#
-    a = data.indexOf("*"); // a adalah index tanda *
-    b = data.indexOf("#"); // b adalah index tanda #
-    s_angin = data.substring(a + 1, b); // membuang tanda * dan # sehingga di dapat nilai dari arah angin
-    // arah_angin = "Inisiasi awal";
+    // 4. Kodingan LoRA di mulai dari sini
 
-    if (s_angin.equals("1")) { // jika nilai dari sensor 1 maka arah angin utara
-      arah_angin = "utara     ";
+    while (1) {
+        // Kodingan LoRa untuk mengirim data atau menerima
+
+        // Print ke serial monitor dengan aman
+        if (xSemaphoreTake(data_mutex, pdMS_TO_TICKS(10))) {
+            Serial.printf("%.3f,%.3f,%.2f,%.2f,%.2f,%.2f,%.1f\n", live_data.so2_ugm, live_data.h2s_ugm, live_data.h2s_temp, live_data.h2s_hum,
+                          live_data.wind_speed, live_data.bus_voltage_v, live_data.current_ma);
+
+            xSemaphoreGive(data_mutex);
+        }
+
+        delay(1000); // Delay 1 detik untuk menghindari flooding serial monitor
+        vTaskDelay(pdMS_TO_TICKS(1));
     }
-    if (s_angin.equals("2")) {
-      arah_angin = "timur laut";
-    }
-    if (s_angin.equals("3")) {
-      arah_angin = "timur     ";
-    }
-    if (s_angin.equals("4")) {
-      arah_angin = "tenggara  ";
-    }
-    if (s_angin.equals("5")) {
-      arah_angin = "selatan   ";
-    }
-    if (s_angin.equals("6")) {
-      arah_angin = "barat daya";
-    }
-    if (s_angin.equals("7")) {
-      arah_angin = "barat     ";
-    }
-    if (s_angin.equals("8")) {
-      arah_angin = "barat laut";
-    }
-
-    printf("UART: %s \n", s_angin.c_str());
-    printf("Arah angin: %s \n", arah_angin.c_str());
-  }
-  delay(1000);
-}
-
-extern "C" void app_main(void) {
-    setup();
-    loop();
 }

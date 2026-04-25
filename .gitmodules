@@ -1,0 +1,3 @@
+[submodule "firmware/data_logger_heltec_arduino/components"]
+	path = firmware/data_logger_heltec_arduino/components
+	url = git@github.com:bokumentation/esp-idf-my-components.git
